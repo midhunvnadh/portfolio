@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Alata&display=swap');
+/* Defining Something Universal ;) */
+*{
+    font-family: 'Alata', sans-serif;
+    transition: all 0.3s ease;
+}
+
+/* Website Themeing Control */
+$bg-wrap         : url(../img/wrap-bg.jpeg);
+$bg-wrap-lg      : url(../img/wrap-bg-lg.jpg);
+$Home-pic-height : 300px;
+$Home-pic-width  : 300px;
+$spc-btn-padding : 12px 16px;
+$spc-btn-color   : #fff;
+$rs-breakpoint   : 728px;
+
+/* Reduce code Redundancy*/ 
+@mixin displayflex {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-wrap: wrap;
+}
+@mixin bg-cover-full {
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+@mixin text-outline {
+    $color:rgba(0,0,0,0.35);
+    text-shadow: 2px 0 0 $color,
+    -2px 0 0 $color,
+    0 2px 0 $color,
+    0 -2px 0 $color,
+    1px 1px 0$color,
+    -1px -1px 0 $color,
+    1px -1px 0 $color,
+    -1px 1px 0 $color;
+}
+
+/*Styling Starts*/
+body{
+    margin:0;
+    section.home{
+        padding: 50px;
+        background: $bg-wrap-lg;
+        @include bg-cover-full();
+        @media screen and (max-width:$rs-breakpoint){
+            background: $bg-wrap;
+            @include bg-cover-full();
+        }
+        color:#fff;
+        $Height:100vh;
+        $Width:100vw;
+        min-height:$Height;
+        min-width:auto;
+        @include displayflex;
+        flex-direction: column;
+        .center{
+            text-align: center;
+            @include displayflex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            .port_pic_holder{
+                $Height: $Home-pic-height;
+                $Width: $Home-pic-width;
+                max-height:$Height;
+                max-width:$Width;
+                min-height:$Height;
+                min-width:$Width;
+                overflow: hidden;
+                @include displayflex;
+                border-radius: 50%;
+                &:hover{
+                    box-shadow:0 0 8px -2px #131a21;
+                }
+                img{
+                    height:$Height;
+                    width:$Width;
+                }
+            }
+            .my_info{
+                .my_name{
+                    @media screen and (min-width:$rs-breakpoint){
+                        font-size:30px;
+                    }
+                    font-size: 25px;
+                    @include text-outline();
+                }
+                .my_info_desc{
+                    @media screen and (min-width:$rs-breakpoint){
+                        font-size:20px;
+                    }
+                    @include text-outline();
+                }
+            }
+        }
+        .follow_mystery{
+            @include displayflex();
+            flex-direction: row;
+            margin-top: 100px;
+            .special-btn{
+                &:not(:hover){
+                    @include text-outline();
+                }
+                background: none;
+                font-size:14px;
+                border: 2px solid #fff;
+                padding: $spc-btn-padding;
+                color: $spc-btn-color;
+                transform: scale(1.3);
+                cursor: pointer;
+                display: inline;
+                margin:30px;
+                &:hover{
+                    background:#fff;
+                    color: #000;
+                }
+            }
+        }
+    }
+}
