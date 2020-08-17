@@ -4,6 +4,10 @@
     font-family: 'Alata', sans-serif;
     transition: all 0.3s ease;
 }
+html{
+    overflow-x: hidden;
+    max-width: 100vw;
+}
 
 /* Website Themeing Control */
 $bg-wrap         : url(../img/wrap-bg.jpeg);
@@ -153,7 +157,8 @@ body{
                 margin-top: 100px;
                 a{
                     text-decoration: none;
-                    .special-btn{
+                    -webkit-tap-highlight-color: rgba(0,0,0,0); /* Remome the Blue bg  */
+                    .special-btn{                                 /* on Touch In Android */
                         &:not(:hover){
                             @include text-outline();
                         }

@@ -8,6 +8,9 @@ const gotoAPage = (node, delay) => {
       marginLeft:window.innerWidth * -1,
       opacity:0,
     }, 0)
+    .from(window, 0.3,{
+      overflow:"hidden"
+    },0);
   return timeline;
 }
 
@@ -19,6 +22,9 @@ const gotoHome = (node, delay) => {
         marginLeft:window.innerWidth,
         opacity:0,
       },0)
+      .from(window, 0.3,{
+        overflowX:"hidden"
+      },0);
     return timeline;
 }
 
