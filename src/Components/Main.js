@@ -1,11 +1,12 @@
 import React from 'react';
 import "../styles/main.scss";
 import port_pic from "../img/port_pic.png";
-import {Link} from "react-router-dom";
+import Nav from '../Nav';
+class Main extends React.Component {
+  render () {
+      return (
 
-const mainSection = () => {
-  return (
-    <section class="home">
+        <section class="home">
         <div class = "center">
             <span class = "port_pic_holder">
                 <img src = {port_pic} alt = "My Picture"/>
@@ -21,32 +22,10 @@ const mainSection = () => {
             </div>
         </div>
         <div class = "follow_mystery">
-            <Link to = {"about"}>
-                <button class = "special-btn">
-                    About
-                </button>
-            </Link>
-
-            <Link to = {"blog"}>
-                <button class = "special-btn">
-                    Blog
-                </button>
-            </Link>
-
-            <Link to = {"contact"}>
-                <button class = "special-btn">
-                    Contact
-                </button>
-            </Link>
-
-            <Link to = {"discover"}>
-                <button class = "special-btn">
-                    Discover
-                </button>
-            </Link>
+            <Nav/>
         </div>
     </section>
-  );
+      );
+  }
 }
-
-export default mainSection;
+export default Main;
