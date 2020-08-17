@@ -1,6 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-import {BrowserRouter, Link, Route} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 const routes = [
   { to: '/about', label: 'About' },
   { to: '/blog', label: 'Blog' },
@@ -11,7 +10,7 @@ const routes = [
 const Nav = () => {
   const links = routes.map(({ to, label }) => {
     return <Link to={to}>
-              <button class = "special-btn">
+              <button className = "special-btn">
                 {label}
               </button>
             </Link>}

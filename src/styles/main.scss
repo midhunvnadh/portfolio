@@ -88,16 +88,16 @@ $rs-breakpoint   : 728px;
 body{
     @include fade-in-transition();
     margin:0;
+    background: $bg-wrap-lg;
+    @include bg-cover-full();
+    @media screen and (max-width:$rs-breakpoint){
+        background: $bg-wrap;
+        @include bg-cover-full();
+    }
     section{
         /* Theming for Home */
         &.home{
             padding: 50px;
-            background: $bg-wrap-lg;
-            @include bg-cover-full();
-            @media screen and (max-width:$rs-breakpoint){
-                background: $bg-wrap;
-                @include bg-cover-full();
-            }
             color:#fff;
             $Height:100vh;
             $Width:100vw;

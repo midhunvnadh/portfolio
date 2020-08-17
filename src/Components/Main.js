@@ -6,22 +6,22 @@ class Main extends React.Component {
   render () {
       return (
 
-        <section class="home">
-        <div class = "center">
-            <span class = "port_pic_holder">
-                <img src = {port_pic} alt = "My Picture"/>
+        <section className = "home">
+        <div className = "center">
+            <span className = "port_pic_holder">
+                <img src = {port_pic} alt = ""/>
             </span>
-            <div class = "my_info">
-                <span class = "my_name">
+            <div className = "my_info">
+                <span className = "my_name">
                     <h1>Midhun V Nadh</h1>
                 </span>
-                <p class = "my_info_desc">
+                <p className = "my_info_desc">
                     Just a dude passionate about computers <br />
                     and goes deep into the mysteries of the <strong>Quantum Realm</strong>
                 </p>
             </div>
         </div>
-        <div class = "follow_mystery">
+        <div className = "follow_mystery">
             <Nav/>
         </div>
     </section>

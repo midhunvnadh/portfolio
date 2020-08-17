@@ -2,14 +2,14 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 function Discover(){
     return(
-        <section class = "anim-section discover-page">
+        <section className = "anim-section discover-page">
             <Link to = {"/"}>
-                <span class = "close-section">
-                    &#10006;
+                <span className = "close-section">
+                    &#8592;
                 </span>
             </Link>
-            <div class = "header">
-                <h1 class = "section-identity">Discover Me !</h1>
+            <div className = "header">
+                <h1 className = "section-identity">Discover Me !</h1>
                 <p>You might be surprised !</p>
             </div>
         </section>
