@@ -1,8 +1,17 @@
 import React from 'react';
 import {Link} from "react-router-dom";
+import { motion } from "framer-motion"
+import { TransitionSub } from "./Transitions";
 
 function Blog(){
     return(
+        <motion.div className="app" 
+            transition  = "transProps"
+            animate     = "in"
+            exit        = "out"
+            initial     = "out"
+            variants    = { TransitionSub() }
+        >
         <section className = "anim-section blog-page">
             <Link to = {"/"}>
                 <span className = "close-section">
@@ -14,6 +23,7 @@ function Blog(){
                 <p>These are my latest posts</p>
             </div>
         </section>
+        </motion.div>
     );
 }
 export default Blog;

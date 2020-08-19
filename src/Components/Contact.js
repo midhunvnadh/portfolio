@@ -1,7 +1,17 @@
 import React from 'react';
 import {Link} from "react-router-dom"
+import { motion } from "framer-motion"
+import { TransitionSub } from "./Transitions";
+
 function Contact(){
     return(
+    <motion.div className="app" 
+        transition  = "transProps"
+        animate     = "in"
+        exit        = "out"
+        initial     = "out"
+        variants    = { TransitionSub() }
+    >
         <section className = "anim-section contact-page">
             <Link to = {"/"}>
                 <span className = "close-section">
@@ -13,6 +23,7 @@ function Contact(){
                 <p>You know, we could get in touch !</p>
             </div>
         </section>
+    </motion.div>
     );
 }
 export default Contact;

@@ -1,7 +1,17 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import { motion } from "framer-motion";
+import { TransitionSub } from "./Transitions";
+
 function Discover(){
     return(
+    <motion.div className="app" 
+        transition  = "transProps"
+        animate     = "in"
+        exit        = "out"
+        initial     = "out"
+        variants    = { TransitionSub() }
+    >
         <section className = "anim-section discover-page">
             <Link to = {"/"}>
                 <span className = "close-section">
@@ -13,6 +23,7 @@ function Discover(){
                 <p>You might be surprised !</p>
             </div>
         </section>
+    </motion.div>
     );
 }
 export default Discover;
