@@ -6,6 +6,7 @@ import About    from './Components/About';
 import Blog     from './Components/Blog';
 import Contact  from './Components/Contact';
 import Discover from './Components/Discover';
+import Admin    from './Components/Admin';
 import "./styles/main.scss";
 function App() {
         const location = useLocation();
@@ -17,6 +18,7 @@ function App() {
                         <Route path="/blog"     component={Blog}     />
                         <Route path="/contact"  component={Contact}  />
                         <Route path="/discover" component={Discover} />
+                        <Route path="/admin"    component={Admin}    />
                     </Switch>
             </AnimatePresence>
         );

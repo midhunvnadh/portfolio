@@ -97,6 +97,40 @@ $rs-breakpoint   : 728px;
     }
 }
 
+@mixin special-btn($getStateNeeded: true) {
+    
+    .special-btn{                                 /* on Touch In Android */
+        
+        background: none;
+        outline:none;
+        font-size:14px;
+        @if $getStateNeeded{
+            border: 2px solid #799351;
+            color: #799351;
+        } @else {
+            border: 2px solid #fff;
+            color: $spc-btn-color;
+            &:not(:hover){
+                @include text-outline();
+            }
+        }
+        padding: $spc-btn-padding;
+        transform: scale(1.3);
+        cursor: pointer;
+        display: inline;
+        margin:30px;
+        @media screen and (max-width:$rs-breakpoint){
+            width: 60vw;
+            height: 60px;
+        }
+        &:hover{
+            background:#fff;
+            color: #000;
+        }
+    }
+}
+
+
 /*Styling Starts*/
 body{
     @include fade-in-transition();
@@ -168,29 +202,7 @@ body{
                 a{
                     text-decoration: none;
                     -webkit-tap-highlight-color: rgba(0,0,0,0); /* Remome the Blue bg  */
-                    .special-btn{                                 /* on Touch In Android */
-                        &:not(:hover){
-                            @include text-outline();
-                        }
-                        background: none;
-                        outline:none;
-                        font-size:14px;
-                        border: 2px solid #fff;
-                        padding: $spc-btn-padding;
-                        color: $spc-btn-color;
-                        transform: scale(1.3);
-                        cursor: pointer;
-                        display: inline;
-                        margin:30px;
-                        @media screen and (max-width:$rs-breakpoint){
-                            width: 60vw;
-                            height: 60px;
-                        }
-                        &:hover{
-                            background:#fff;
-                            color: #000;
-                        }
-                    }
+                    @include special-btn($getStateNeeded : false);
                 }
             }
         }
@@ -236,6 +248,37 @@ body{
                     padding: 10px;
                     border-radius: 50%;
                     cursor:pointer;
+                }
+            }
+        }
+
+        &.admin{
+            @include displayflex();
+            @include ComponentPageTheming(#d54062, #ffa36c, #799351);
+            min-height: 100vh;
+            padding:50px;
+            .container{
+                box-shadow:0 0 8px -2px #131a21;
+                flex-direction: column;
+                background:#fff;
+                padding: 30px;
+                form{
+                    @include displayflex();
+                    flex-direction: column;
+                    input{
+                        margin: 10px;
+                        padding: 5px;
+                        height: 40px;
+                        width: 300px;
+                        border: 1px solid #799351;
+                        &::placeholder{
+                            color:#ffa36c;
+                        }
+                    }
+                    @include special-btn($getStateNeeded : true);
+                }
+                .header{
+                    text-align: center;
                 }
             }
         }
