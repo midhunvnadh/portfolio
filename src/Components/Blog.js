@@ -1,9 +1,10 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 import { motion } from "framer-motion"
-import { TransitionSub } from "./Transitions";
+import { TransitionSub, HeaderColor } from "./Transitions";
 
 function Blog(){
+    HeaderColor();
     return(
         <motion.div className="app" 
             transition  = "transProps"

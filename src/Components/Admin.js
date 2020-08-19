@@ -8,8 +8,8 @@ function Admin(){
                         Admin Login
                     </h1>
                 </div>
-                <form>
-                    <input type = "email" placeholder = "Enter your Email"/>
+                <form autoComplete = "on">
+                    <input type = "email" placeholder = "Enter your Email" autoComplete = "email"/>
                     <input type = "password" placeholder = "Enter your Password"/>
                     <button className = "special-btn">Login</button>
                 </form>

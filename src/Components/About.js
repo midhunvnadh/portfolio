@@ -1,9 +1,10 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import { motion } from "framer-motion"
-import { TransitionSub } from './Transitions';
+import { TransitionSub, HeaderColor } from './Transitions';
 
 function About(){
+    HeaderColor();
     return(
         <motion.div className="app" 
             transition  = "transProps"
@@ -19,6 +20,8 @@ function About(){
                     </span>
                 </Link>
                 <div className = "header">
+                    <script>
+                    </script>
                     <h1 className = "section-identity">About Me</h1>
                     <p>This is a summary on me</p>
                 </div>
