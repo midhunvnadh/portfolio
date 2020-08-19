@@ -2,12 +2,12 @@
 function TransitionSub(){
         return({
             out: {
-                x: -window.innerWidth,
-                opacity:0
+                x:-1 * window.innerWidth,
+                opacity:0,
             },
             in: {
                 x: 0,
-                opacity:1
+                opacity:1,
             },
             transProps: {
                 ease : "easeInOut",

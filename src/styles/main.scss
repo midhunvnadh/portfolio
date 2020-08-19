@@ -204,6 +204,7 @@ body{
             bottom:0;
             right:0;
             left:0;
+            height:100vh;
             @include displayflex();
             .header{
                 h1{

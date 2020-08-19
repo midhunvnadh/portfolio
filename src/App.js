@@ -6,10 +6,11 @@ import About    from './Components/About';
 import Blog     from './Components/Blog';
 import Contact  from './Components/Contact';
 import Discover from './Components/Discover';
+import "./styles/main.scss";
 function App() {
         const location = useLocation();
         return(
-            <AnimatePresence /*exitBeforeEnter*/ >
+            <AnimatePresence exitBeforeEnter >
                     <Switch location={location} key={location.pathname}>
                         <Route exact path="/"   component={Main}     />
                         <Route path="/about"    component={About}    />

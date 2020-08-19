@@ -1,5 +1,4 @@
 import React from 'react';
-import "../styles/main.scss";
 import port_pic from "../img/port_pic.png";
 import Nav from '../Nav';
 import { motion } from "framer-motion";
