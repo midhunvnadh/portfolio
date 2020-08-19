@@ -19,6 +19,14 @@ $spc-btn-color   : #fff;
 $rs-breakpoint   : 728px;
 
 /* Reduce code Redundancy*/ 
+@mixin defineScrollBar($color1, $color2, $color3){
+    &::-webkit-scrollbar {width: 5px;}
+    &::-webkit-scrollbar-track {background:$color1;
+                                border-radius: 5px;
+    }
+    &::-webkit-scrollbar-thumb {background: $color2;
+    }
+}
 @mixin displayflex {
     display:flex;
     justify-content:center;
@@ -69,6 +77,7 @@ $rs-breakpoint   : 728px;
     }
 }
 @mixin ComponentPageTheming($color1, $color2, $color3){
+    @include defineScrollBar($color1, $color2, $color3);
     background: $color1;
     .header{
         h1{
@@ -98,6 +107,7 @@ body{
         background: $bg-wrap;
         @include bg-cover-full();
     }
+    @include defineScrollBar(#000, #fff, #000);
     section{
         /* Theming for Home */
         &.home{
