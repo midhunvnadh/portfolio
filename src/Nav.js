@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 const routes = [
   { to: '/about', label: 'About' },
   { to: '/blog', label: 'Blog' },
@@ -9,11 +9,11 @@ const routes = [
 
 const Nav = () => {
   const links = routes.map(({ to, label }) => {
-    return <Link to={to}>
+    return <NavLink to={to}>
               <button className = "special-btn">
                 {label}
               </button>
-            </Link>}
+            </NavLink>}
   )
 
   return links;
