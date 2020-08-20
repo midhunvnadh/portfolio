@@ -10,7 +10,8 @@ function Admin(){
                 </div>
                 <form autoComplete = "on">
                     <input type = "email" placeholder = "Enter your Email" autoComplete = "email"/>
-                    <input type = "password" placeholder = "Enter your Password"/>
+                    <input type = "password" placeholder = "Enter your Password" autoComplete = "current-password"/>
+                    <span style={{marginTop: "1.5em"}}></span>
                     <button className = "special-btn">Login</button>
                 </form>
             </div>

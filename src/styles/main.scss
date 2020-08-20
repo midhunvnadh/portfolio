@@ -99,7 +99,7 @@ $rs-breakpoint   : 728px;
 
 @mixin special-btn($getStateNeeded: true) {
     
-    .special-btn{                                 /* on Touch In Android */
+    .special-btn{
         
         background: none;
         outline:none;
@@ -108,26 +108,28 @@ $rs-breakpoint   : 728px;
         transform: scale(1.3);
         cursor: pointer;
         display: inline;
-        margin:30px;
         border-radius: 25px;
-        width: 90px;
+        @media screen and (max-width:$rs-breakpoint){
+            width: 60vw;
+            height: 60px;
+        }
         @if $getStateNeeded{
             border: 2px solid #799351;
             color: #799351;
+            &:hover{
+                color:#d54062;
+                border: 2px solid #d54062;
+            }
         } @else {
             border: 2px solid #fff;
             color: $spc-btn-color;
             &:not(:hover){
                 @include text-outline();
             }
-        }
-        @media screen and (max-width:$rs-breakpoint){
-            width: 60vw;
-            height: 60px;
-        }
-        &:hover{
-            background:#fff;
-            color: #000;
+            &:hover{
+                background:#fff;
+                color: #000;
+            }
         }
     }
 }
@@ -135,6 +137,7 @@ $rs-breakpoint   : 728px;
 
 /*Styling Starts*/
 body{
+    min-height: 100vh;
     @include fade-in-transition();
     margin:0;
     background: $bg-wrap-lg;
@@ -205,6 +208,7 @@ body{
                     text-decoration: none;
                     -webkit-tap-highlight-color: rgba(0,0,0,0); /* Remome the Blue bg  */
                     @include special-btn($getStateNeeded : false);
+                    margin: 2em;
                 }
             }
         }
@@ -222,12 +226,12 @@ body{
         &.discover-page{
             @include ComponentPageTheming(#d54062, #ffa36c, #799351)
         }
-        &.anim-section{
+        &.anim-section{/*
             position: fixed;
             top:0;
             bottom:0;
             right:0;
-            left:0;
+            left:0;*/
             height:100vh;
             @include displayflex();
             .header{
@@ -277,12 +281,34 @@ body{
                         &::placeholder{
                             color:#ffa36c;
                         }
+                        &:focus{
+                            border: 1px solid #d54062;
+                        }
                     }
                     @include special-btn($getStateNeeded : true);
                 }
                 .header{
                     text-align: center;
                 }
+            }
+        }
+    }
+    footer{
+        background: #382933;
+        padding: 30px;
+        @include displayflex();
+        .main-footer{
+            display: block;
+        }
+        .sub-footer{
+            color: #cedebd;
+            letter-spacing: 1px;
+            *{
+                color: #cedebd;
+            }
+            b{
+                position: relative;
+                top: 5px;
             }
         }
     }
