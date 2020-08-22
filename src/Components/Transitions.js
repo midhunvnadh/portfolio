@@ -12,7 +12,7 @@ function TransitionSub(){
                 opacity:1,
             },
             transProps: {
-                ease : "linear",
+                ease : "easeInOut",
                 duration: 0.25
             }
         });
@@ -32,8 +32,8 @@ function TransitionMain() {
             opacity:1
         },
         transProps: {
-            ease : "linear",
-            duration: 0.25
+            ease : "easeInOut",
+            duration: 2
         }
     });
 }
@@ -45,7 +45,6 @@ function HeaderColor(){
     };
     return setTimeout(function(){
         if(document.querySelector(".anim-section") !== null){
-            //console.log(document.querySelector(".anim-section"));
             document.querySelector('meta[name="theme-color"]').setAttribute("content", getStyle(document.querySelector(".anim-section"), "background-color"));
         }
     }, 300);

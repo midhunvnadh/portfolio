@@ -11,11 +11,11 @@ html{
 
 /* Website Themeing Control */
 $bg-wrap         : url(../img/wrap-bg.jpeg);
-$bg-wrap-lg      : url(../img/wrap-bg-lg.jpg);
+$bg-wrap-lg      : url(../img/pexels-negative-space-34153.jpg);
 $Home-pic-height : 300px;
 $Home-pic-width  : 300px;
 $spc-btn-padding : 12px 16px;
-$spc-btn-color   : #fff;
+$spc-btn-color   : #eee;
 $rs-breakpoint   : 728px;
 
 /* Reduce code Redundancy*/ 
@@ -198,10 +198,21 @@ body{
                 }
             }
             .follow_mystery{
+                position: relative;
                 @include displayflex();
                 flex-direction: row;
+                &:before{
+                    content:'';
+                    position: absolute;
+                    top: 0;right: 0;left: 0;bottom: 0;
+                    background-color:rgba(0, 118, 117, 0.20);
+                    border-radius: 15px;
+                }
                 @media screen and (max-width:$rs-breakpoint){
                     flex-direction: column;
+                    &:before{
+                        content:none
+                    }
                 }
                 margin-top: 50px;
                 a{
@@ -247,7 +258,7 @@ body{
                 .close-section{
                     @include displayflex();
                     @include hw-same(40px);
-                    position: absolute;
+                    position: fixed;
                     top : 10px;
                     left: 10px;
                     font-size:30px;

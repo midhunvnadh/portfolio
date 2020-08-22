@@ -31,9 +31,10 @@ class Main extends React.Component {
                             </p>
                         </div>
                     </div>
-                    <div className = "follow_mystery">
+                    
+                    <motion.div className = "follow_mystery" animate = {{marginTop:'0px', opacity:1}} initial = {false}>
                             <Nav/>
-                    </div>
+                    </motion.div>
                 </section>
             </motion.div>
       );
