@@ -36,8 +36,12 @@ $rs-breakpoint   : 728px;
 }
 @mixin bg-cover-full {
     background-attachment: fixed;
-    background-size: cover;
+    background-size: 100vw;
     background-repeat: no-repeat;
+    @media screen and (max-width: $rs-breakpoint){
+        background-size: 110vh;
+        background-position: 50%;
+    }
 }
 @mixin text-outline {
     $color:rgba(0,0,0,0.35);
@@ -177,12 +181,13 @@ body{
                         h1{
                             &.section-identity{
                                 font-size:60px;
-                                margin-block-end: 0.1em;
+                                margin-block-end: 0em;
                             }
                             margin-block-start: 0px;
                         }
                         p{
-                            margin-left: 6px;
+                            margin-top: -1px;
+                            margin-left: 5px;
                         }
                         top:10px;
                         position: sticky;
@@ -235,12 +240,35 @@ body{
                     }
                 }
             }
+            &.about-page{
+                position: relative;
+                &:before{
+                    content:'';
+                    transform: rotate(-3deg);
+                    width: 100%;
+                    position: absolute;
+                    height: 100px;
+                    background: #ecf4f3;
+                    top: -50px;
+                }
+
+                &:after{
+                    content:'';
+                    transform: rotate(3deg);
+                    width: 100%;
+                    position: absolute;
+                    height: 100px;
+                    background: #ecf4f3;
+                    top: -50px;
+                }
+
+            }
             &.skills-page{
                 position: relative;
                 &:before{
                     content:'';
-                    transform: rotate(3deg);
-                    width: 110%;
+                    transform: rotate(-3deg);
+                    width: 100%;
                     position: absolute;
                     height: 100px;
                     background: #e4e4e4;
@@ -250,14 +278,17 @@ body{
                 &:after{
                     content:'';
                     transform: rotate(3deg);
-                    width: 110%;
+                    width: 100%;
                     position: absolute;
                     height: 100px;
                     background: #e4e4e4;
-                    bottom: -50px;
+                    top: -50px;
                 }
+
                 .section-side{
+                    text-align: center;
                     .skills-pers{
+                        text-align: left;
                         @include displayflex()
                         .skill{
                             flex: calc(50% - 50px);
@@ -283,6 +314,17 @@ body{
                                 z-index: 0;
                             }
                         }
+                        .fillPercent{
+                            .percent{
+                                animation:fadeInUp 1s linear;
+                                @keyframes fadeInUp{
+                                    from{
+                                        width: 0;
+                                        opacity: 0;
+                                    }
+                                }
+                            }
+                        }
                     }
                     @media screen and (max-width:$rs-breakpoint){
                         .skills-pers{
@@ -292,7 +334,60 @@ body{
                             }
                         }
                     }
+                    .load-more{
+                        padding:14px 25px;
+                        margin: 25px;
+                        margin-bottom: none;
+                        background: none;
+                        color: #68b0ab;
+                        border-radius: 4px;
+                        font-family: 'Oswald', sans-serif;
+                        border: 1px solid #68b0ab;
+                        cursor: pointer;
+                        width: 200px;
+                        position: relative;
+                        .loader{
+                            @include hw-same(15px);
+                            border: 3px solid #ff7e67;
+                            border-left: 3px solid transparent;
+                            border-radius: 50%;
+                            display: inline-block;
+                            position: absolute;
+                            right: 25px;
+                            top: 14px;
+                            opacity: 0;
+                            animation: rotate 1s linear infinite;
+                            @keyframes rotate{
+                                to{
+                                    transform: rotate(360deg);
+                                }
+                            }
+                        }
+                    }
                 }
+            }
+            &.contact-page{
+                position: relative;
+                &:before{
+                    content:'';
+                    transform: rotate(-3deg);
+                    width: 100%;
+                    position: absolute;
+                    height: 100px;
+                    background: #ecf4f3;
+                    top: -50px;
+                }
+
+                &:after{
+                    content:'';
+                    transform: rotate(3deg);
+                    width: 100%;
+                    position: absolute;
+                    height: 100px;
+                    background: #ecf4f3;
+                    top: -50px;
+                }
+
             }
             &.discover-page{
                 position: relative;
@@ -302,8 +397,8 @@ body{
                     position: absolute;
                     border-radius: 50%;
                     background: #e4e4e4;
-                    top: -50px;
-                    margin-left: 100px;
+                    top: -65px;
+                    margin-left: 96px;
                 }
                 &:after{
                     content:'';
@@ -311,8 +406,8 @@ body{
                     position: absolute;
                     border-radius: 50%;
                     background: #ecf4f3;
-                    top: -50px;
-                    margin-left: -100px;
+                    top: -35px;
+                    margin-left: -96px;
                 }
             }
         }

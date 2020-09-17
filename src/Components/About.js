@@ -9,9 +9,9 @@ function About(){
                     </div>
                 </div>
                 <div className = "section-side">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sapien purus, condimentum eleifend ante vitae, elementum varius metus. Pellentesque at convallis metus, non fringilla urna. Aliquam congue nibh sed arcu scelerisque, et sollicitudin nibh hendrerit. Vivamus nibh enim, bibendum sit amet nisi eget, tincidunt mollis elit. Nulla tincidunt dapibus ullamcorper. Maecenas tempor sem sed diam placerat, sed semper orci pellentesque. Mauris ornare in tellus in vehicula. Nullam eu sapien ac ex dignissim elementum.
-
-Vivamus auctor commodo tempor. Nam tempor bibendum arcu in tristique. Duis ornare a arcu at lacinia. Integer a interdum tellus. Sed eget efficitur dui. Aenean sit amet libero tortor. Quisque nisl ipsum, maximus nec consectetur quis, vehicula non lacus. Nunc faucibus tortor at placerat elementum. Maecenas iaculis vulputate turpis vitae dapibus. Nulla lectus urna, vestibulum sagittis velit sed, aliquet finibus justo. Morbi a molestie justo. Nunc odio orci, faucibus tincidunt mi commodo, aliquam venenatis justo. Pellentesque eu orci in est pretium vulputate.
+                <p>Hi, I am a <strong>full stack developer</strong> from Kollam, Kerala, India and is extremely <strong>passionate</strong> about computers. I am currently doing B.Tech in <strong>Computer Science</strong>. I would gladly like to offer you the best of art <strong>custom tailored technical support</strong> with freelance attractive <strong>web development</strong> projects that can hit right at the <strong>bulls-eye</strong>.</p>
+                <p>Apart from being a full stack developer, I develop <strong>Custom ROM's</strong> for Android devices and am a big fan of <strong>Ubuntu Touch</strong> or Linux-on-android projects. Interested in <strong>Android Kernels</strong> and tweaking it to get more cool features.</p>
+                <p>I assure you to make the <strong>best for you</strong> and I make sure that my passion shall reflect on this <strong>page</strong>.</p>
                 </div>
             </section>
     );
