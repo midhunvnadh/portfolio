@@ -1,5 +1,8 @@
 import React from 'react';
 import Reveal from 'react-reveal/Reveal';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faWordpress, faGoogle, faDev, faReact } from '@fortawesome/free-brands-svg-icons'
+import Gear from "../svg/setting.svg"
 
 const skillsInfo = [
     {skill:"HTML5", percent:"98%", show:"block"},
@@ -20,7 +23,7 @@ const skillsInfo = [
 const loadMore = () => {
     var skills = document.querySelectorAll("section .skills-pers .skill"), i
     const moreBtnLabel = document.querySelector(".load-more label")
-    if(skills[6].style.display == "none"){
+    if(skills[6].style.display === "none"){
         for (i = 6; i < skillsInfo.length; i++){
             skills[i].style.display = "block";
         }
@@ -55,17 +58,48 @@ function Skills(){
                 <div className = "header">
                     <div className = "container">
                         <h1 className = "section-identity">My Skills</h1>
-                        <p>I am good at these</p>
+                        <p>I am mainly good at these</p>
+                        <ul>
+                            <li>
+                                <FontAwesomeIcon icon={faWordpress} />
+                                <label>
+                                    Wordpress
+                                </label>
+                            </li>
+                            <li>
+                                <FontAwesomeIcon icon={faGoogle} />
+                                <label>
+                                    SEO Optimization
+                                </label>
+                            </li>
+                            <li>
+                                <FontAwesomeIcon icon={faDev} />
+                                <label>
+                                    Web Design and Development
+                                </label>
+                            </li>
+                            <li>
+                                <FontAwesomeIcon icon={faReact} />
+                                <label>
+                                    React.js
+                                </label>
+                            </li>
+                        </ul>
                     </div>
                 </div>
                 <div className = "section-side">
                         <div className = "skills-pers">
                                 <GetSkills />
                         </div>
-                        <button className="load-more" onClick={loadMore}>
-                            <label>Show More</label>
-                            <div className = "loader"></div>
-                        </button>
+                        <div class="load-more-hold">
+                            <button className="load-more" onClick={loadMore}>
+                                <label>Show More</label>
+                                <div className = "loader"></div>
+                            </button>
+                        </div>
+                </div>
+                <div className = "svg-hold">
+                    <img src = {Gear}/>
                 </div>
             </section>
     );

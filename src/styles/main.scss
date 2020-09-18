@@ -13,13 +13,14 @@ html{
 /* Website Themeing Control */
 $bg-wrap         : url(../img/wrap-bg.jpeg);
 $bg-wrap-lg      : url(../img/pexels-negative-space-34153.jpg);
-$Home-pic-height : 300px;
-$Home-pic-width  : 300px;
+$Home-pic-height : 250px;
+$Home-pic-width  : 250px;
 $spc-btn-padding : 12px 16px;
 $spc-btn-color   : #eee;
 $rs-breakpoint   : 728px;
 
-/* Reduce code Redundancy*/ 
+/* Reduce code Redundancy*/
+
 @mixin defineScrollBar($color1, $color2, $color3){
     &::-webkit-scrollbar {width: 5px;}
     &::-webkit-scrollbar-track {background:$color1;
@@ -35,13 +36,9 @@ $rs-breakpoint   : 728px;
     flex-wrap: wrap;
 }
 @mixin bg-cover-full {
-    background-attachment: fixed;
-    background-size: 100vw;
+    background-size: cover;
     background-repeat: no-repeat;
-    @media screen and (max-width: $rs-breakpoint){
-        background-size: 110vh;
-        background-position: 50%;
-    }
+    background-attachment: fixed;
 }
 @mixin text-outline {
     $color:rgba(0,0,0,0.35);
@@ -77,19 +74,35 @@ $rs-breakpoint   : 728px;
         }
     }
 }
+@mixin overlapDesign($color, $color1) {
+    position: relative;
+    &:before{
+        content:'';
+        @include hw-same(100px);
+        position: absolute;
+        border-radius: 50%;
+        background: $color;
+        top: -45px;
+        left:20%;
+    }
+    &:after{
+        content:'';
+        @include hw-same(100px);
+        position: absolute;
+        border-radius: 50%;
+        background: $color1;
+        top: -65px;
+        right:20%;
+    }
+}
 
 /*Styling Starts*/
 body{
     margin:0;
-    background: $bg-wrap-lg;
-    @include bg-cover-full();
-    @media screen and (max-width:$rs-breakpoint){
-        background: $bg-wrap;
-        @include bg-cover-full();
-    }
     @include defineScrollBar(#382933, #fff, #382933);
     #root{
         .social{
+            z-index: 2;
             .icon-grp{
                 .social-icon{
                     img{
@@ -118,20 +131,35 @@ body{
         section{
             /* Theming for Home */
             &.home{
-                padding: 50px;
                 color:#fff;
-                $Height:100vh;
                 $Width:100vw;
-                min-height:$Height;
-                min-width:auto;
                 @include displayflex;
                 flex-direction: column;
                 backdrop-filter: blur(5px) opacity(0.8) sepia(5%);
-                .center{
+                $Height:100vh;
+                height:120vh;
+                @media screen and (max-width:$rs-breakpoint){
+                    justify-content: space-evenly;
+                }
+                #tsparticles{
+                    background: #ff7e67;
+                    width: 100vw;
+                    height:100%;
+                    position:absolute;
+                    z-index:-1;
                     text-align: center;
+                }
+                .center{
                     @include displayflex;
                     flex-direction: column;
                     flex-wrap: wrap;
+                    text-align: center;
+                    @media screen and (min-width:$rs-breakpoint){
+                        backdrop-filter: blur(1px) sepia(30%);
+                        box-shadow: 0 0 8px -2px rgba(0,0,0,0.3);
+                        border-radius:10px;
+                        padding:10px;
+                    }
                     .port_pic_holder{
                         $Height: $Home-pic-height;
                         $Width: $Home-pic-width;
@@ -156,13 +184,16 @@ body{
                                 font-size:30px;
                             }
                             font-size: 25px;
-                            @include text-outline();
+                            h1{
+                                margin-block-start: 0.83em;
+                                margin-block-end: 0
+                            }
                         }
                         .my_info_desc{
                             @media screen and (min-width:$rs-breakpoint){
-                                font-size:20px;
+                                font-size:14px;
+                                padding: 0px 10px;
                             }
-                            @include text-outline();
                         }
                     }
                 }
@@ -172,12 +203,17 @@ body{
                 min-height:100px;
                 @include displayflex();
                 align-items: stretch;
+                overflow: hidden;
                 @include ComponentPageTheming(#ecf4f3,#68b0ab, #006a71, #ff7e67);
                 &:nth-child(even){
                     background: #e4e4e4;
                 }
                 .header{
                     .container{
+                        top:10px;
+                        position: sticky;
+                        padding: 0 60px;
+                        margin-top: -15px;
                         h1{
                             &.section-identity{
                                 font-size:60px;
@@ -189,10 +225,34 @@ body{
                             margin-top: -1px;
                             margin-left: 5px;
                         }
-                        top:10px;
-                        position: sticky;
-                        padding: 0 60px;
-                        margin-top: -15px;
+                        ul{
+                            list-style-type: none;
+                            margin-block-start: 10px;
+                            margin-block-end: 10px;
+                            padding-inline-start: 0;
+                            li{
+                                margin-block-start: 10px;
+                                @include displayflex();
+                                justify-content: left;
+                                svg{
+                                    color: #68b0ab;
+                                    @include hw-same(20px);
+                                    padding: 5px;
+                                    border-radius: 50%;
+                                }
+                                label{
+                                    margin-left: 8px;
+                                    color:#68b0ab;
+                                    a{
+                                        text-decoration: none;
+                                        color:#68b0ab;
+                                        &:hover{
+                                            text-decoration: underline;
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                     padding:0 10px;
                     height: auto;
@@ -201,7 +261,16 @@ body{
                     width: 44%;
                     padding:0 30px;
                     color: #006a71;
+                    z-index:2
                 }
+                .svg-hold{
+                    position: absolute;
+                    z-index:1;
+                    bottom:-30px;
+                    right:10px;
+                    opacity:0.2;
+                }
+                position: relative;
                 a{
                     text-decoration: none;
                     .close-section{
@@ -240,51 +309,7 @@ body{
                     }
                 }
             }
-            &.about-page{
-                position: relative;
-                &:before{
-                    content:'';
-                    transform: rotate(-3deg);
-                    width: 100%;
-                    position: absolute;
-                    height: 100px;
-                    background: #ecf4f3;
-                    top: -50px;
-                }
-
-                &:after{
-                    content:'';
-                    transform: rotate(3deg);
-                    width: 100%;
-                    position: absolute;
-                    height: 100px;
-                    background: #ecf4f3;
-                    top: -50px;
-                }
-
-            }
             &.skills-page{
-                position: relative;
-                &:before{
-                    content:'';
-                    transform: rotate(-3deg);
-                    width: 100%;
-                    position: absolute;
-                    height: 100px;
-                    background: #e4e4e4;
-                    top: -50px;
-                }
-
-                &:after{
-                    content:'';
-                    transform: rotate(3deg);
-                    width: 100%;
-                    position: absolute;
-                    height: 100px;
-                    background: #e4e4e4;
-                    top: -50px;
-                }
-
                 .section-side{
                     text-align: center;
                     .skills-pers{
@@ -334,80 +359,111 @@ body{
                             }
                         }
                     }
-                    .load-more{
-                        padding:14px 25px;
-                        margin: 25px;
-                        margin-bottom: none;
-                        background: none;
-                        color: #68b0ab;
-                        border-radius: 4px;
-                        font-family: 'Oswald', sans-serif;
-                        border: 1px solid #68b0ab;
-                        cursor: pointer;
-                        width: 200px;
-                        position: relative;
-                        .loader{
-                            @include hw-same(15px);
-                            border: 3px solid #ff7e67;
-                            border-left: 3px solid transparent;
-                            border-radius: 50%;
-                            display: inline-block;
-                            position: absolute;
-                            right: 25px;
-                            top: 14px;
-                            opacity: 0;
-                            animation: rotate 1s linear infinite;
-                            @keyframes rotate{
-                                to{
-                                    transform: rotate(360deg);
+                    .load-more-hold{
+                        background: #e4e4e4;
+                        @media screen and (max-width:$rs-breakpoint){
+                            bottom: 0;
+                            position: sticky;
+                            z-index: 2;
+                        }
+                        .load-more{
+                            padding:14px 25px;
+                            margin: 25px;
+                            margin-bottom: none;
+                            background: none;
+                            color: #68b0ab;
+                            border-radius: 4px;
+                            font-family: 'Oswald', sans-serif;
+                            border: 1px solid #68b0ab;
+                            cursor: pointer;
+                            width: 200px;
+                            position: relative;
+
+                            .loader{
+                                @include hw-same(15px);
+                                border: 3px solid #ff7e67;
+                                border-left: 3px solid transparent;
+                                border-radius: 50%;
+                                display: inline-block;
+                                position: absolute;
+                                right: 25px;
+                                top: 14px;
+                                opacity: 0;
+                                animation: rotate 1s linear infinite;
+                                @keyframes rotate{
+                                    to{
+                                        transform: rotate(360deg);
+                                    }
                                 }
                             }
                         }
                     }
                 }
+                .svg-hold{
+                    img{
+                        @include hw-same(300px);
+                    }
+                    left:50px;
+                    top:50px;
+                    opacity: 0.3;
+                }
+                .header{
+                    z-index:2;
+                }
             }
             &.contact-page{
-                position: relative;
-                &:before{
-                    content:'';
-                    transform: rotate(-3deg);
-                    width: 100%;
-                    position: absolute;
-                    height: 100px;
-                    background: #ecf4f3;
-                    top: -50px;
-                }
-
-                &:after{
-                    content:'';
-                    transform: rotate(3deg);
-                    width: 100%;
-                    position: absolute;
-                    height: 100px;
-                    background: #ecf4f3;
-                    top: -50px;
-                }
-
-            }
-            &.discover-page{
-                position: relative;
-                &:before{
-                    content:'';
-                    @include hw-same(100px);
-                    position: absolute;
-                    border-radius: 50%;
-                    background: #e4e4e4;
-                    top: -65px;
-                    margin-left: 96px;
-                }
-                &:after{
-                    content:'';
-                    @include hw-same(100px);
-                    position: absolute;
-                    border-radius: 50%;
-                    background: #ecf4f3;
-                    top: -35px;
-                    margin-left: -96px;
+                .section-side{
+                    .contact-form{
+                        @include displayflex();
+                        justify-content: stretch;
+                        .form-group{
+                            flex: 100%;
+                            margin:10px 0;
+                            input,textarea{
+                                background: none;
+                                padding: 8px 6px;
+                                border: 2px solid #68b0ab;
+                                color:#68b0ab;
+                                outline: none;
+                                border-radius: 10px;
+                                width: calc(100% - 18px);
+                                resize: none;
+                            }
+                            button{
+                                padding: 14px 16px;
+                                background: #ff7e67;
+                                border: none;
+                                color: #f4f4f4;
+                                cursor: pointer;
+                                border-radius: 10px;
+                            }
+                            label{
+                                position: absolute;
+                                bottom: 8px;
+                                left: 3px;
+                            }
+                            &.row{
+                                @include displayflex();
+                                justify-content: space-between;
+                                input{
+                                    &:first-child{
+                                        margin-bottom: 20px;
+                                    }
+                                }
+                            }
+                            @media screen and (min-width:$rs-breakpoint) {
+                                &.row{
+                                    input{
+                                        width: 278px;
+                                        margin-left: 0;margin-right: 0;
+                                        &:first-child{
+                                            margin-bottom: 0;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -432,3 +488,20 @@ body{
         }
     }
 }
+.box {
+    width: 150px;
+    height: 150px;
+    border-radius: 1em;
+    background-color: #f9f07e;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .magic {
+    width: 200px;
+    height: 200px;
+    background-color: #fff;
+    border-radius: 20px;
+    margin-left: auto;
+    margin-right: auto;
+  }

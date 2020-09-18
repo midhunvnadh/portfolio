@@ -1,17 +1,52 @@
-import React from 'react';
-function Contact(){
+import React, { useState, useEffect, useRef } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
+import {faTelegram} from '@fortawesome/free-brands-svg-icons';
+import MailSvg from '../svg/message.svg';
+
+const Contact = () => {
+    
     return(
         <section className = "anim-section contact-page">
             <div className = "header">
                 <div className = "container">
                     <h1 className = "section-identity">Contact Me</h1>
-                    <p>You know, we could get in touch !</p>
+                    <p>Get in touch !</p>
+                    <ul>
+                        <li>
+                            <FontAwesomeIcon icon={faEnvelope} />
+                            <label>
+                                <a href = "mailto:midhun.vnadh5732@outlook.com">midhun.vnadh5732@outlook.com</a>
+                            </label>
+                        </li>
+                        <li>
+                            <FontAwesomeIcon icon={faTelegram} />
+                            <label>
+                                <a href = "tg://resolve?domain=midhunvnadh">midhunvnadh</a>
+                            </label>
+                        </li>
+                    </ul>
                 </div>
             </div>
             <div className = "section-side">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sapien purus, condimentum eleifend ante vitae, elementum varius metus. Pellentesque at convallis metus, non fringilla urna. Aliquam congue nibh sed arcu scelerisque, et sollicitudin nibh hendrerit. Vivamus nibh enim, bibendum sit amet nisi eget, tincidunt mollis elit. Nulla tincidunt dapibus ullamcorper. Maecenas tempor sem sed diam placerat, sed semper orci pellentesque. Mauris ornare in tellus in vehicula. Nullam eu sapien ac ex dignissim elementum.
-
-Vivamus auctor commodo tempor. Nam tempor bibendum arcu in tristique. Duis ornare a arcu at lacinia. Integer a interdum tellus. Sed eget efficitur dui. Aenean sit amet libero tortor. Quisque nisl ipsum, maximus nec consectetur quis, vehicula non lacus. Nunc faucibus tortor at placerat elementum. Maecenas iaculis vulputate turpis vitae dapibus. Nulla lectus urna, vestibulum sagittis velit sed, aliquet finibus justo. Morbi a molestie justo. Nunc odio orci, faucibus tincidunt mi commodo, aliquam venenatis justo. Pellentesque eu orci in est pretium vulputate.
+                <form className = "contact-form">
+                        <div className = "form-group row">
+                            <input type = "text" autoComplete = "first-name" placeholder = "First Name"/>
+                            <input type = "text" autoComplete = "last-name" placeholder = "Last Name"/>
+                        </div>
+                        <div className = "form-group">
+                            <input type = "text" autoComplete = "off" placeholder = "Subject"/>
+                        </div>
+                        <div className = "form-group">
+                            <textarea placeholder = "Message" rows = "8"></textarea>
+                        </div>
+                        <div className = "form-group">
+                            <button>Send Message</button>
+                        </div>
+                </form>
+            </div>
+            <div className = "svg-hold">
+                    <img src = {MailSvg}/>
             </div>
         </section>
     );
