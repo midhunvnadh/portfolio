@@ -3,12 +3,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
 import {faTelegram} from '@fortawesome/free-brands-svg-icons';
 import MailSvg from '../svg/message.svg';
+import {Parallax } from 'react-scroll-parallax';
 
 const Contact = () => {
     
     return(
         <section className = "anim-section contact-page">
             <div className = "header">
+            <Parallax className="custom-class" x={[-20, 0]} tagOuter="figure">
                 <div className = "container">
                     <h1 className = "section-identity">Contact Me</h1>
                     <p>Get in touch !</p>
@@ -27,8 +29,10 @@ const Contact = () => {
                         </li>
                     </ul>
                 </div>
+                </Parallax>
             </div>
             <div className = "section-side">
+            <Parallax className="custom-class" y={[40, 0]} tagOuter="figure">
                 <form className = "contact-form">
                         <div className = "form-group row">
                             <input type = "text" autoComplete = "first-name" placeholder = "First Name"/>
@@ -44,9 +48,12 @@ const Contact = () => {
                             <button>Send Message</button>
                         </div>
                 </form>
+                </Parallax>
             </div>
             <div className = "svg-hold">
+                <Parallax className="custom-class" y={[-20, 20]} tagOuter="figure">
                     <img src = {MailSvg}/>
+                </Parallax>
             </div>
         </section>
     );

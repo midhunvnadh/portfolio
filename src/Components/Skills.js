@@ -3,6 +3,7 @@ import Reveal from 'react-reveal/Reveal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faWordpress, faGoogle, faDev, faReact } from '@fortawesome/free-brands-svg-icons'
 import Gear from "../svg/setting.svg"
+import { Parallax } from 'react-scroll-parallax';
 
 const skillsInfo = [
     {skill:"HTML5", percent:"98%", show:"block"},
@@ -56,6 +57,7 @@ function Skills(){
     return(
             <section className = "anim-section skills-page">
                 <div className = "header">
+                <Parallax className="custom-class" x={[-20, 0]} tagOuter="figure">
                     <div className = "container">
                         <h1 className = "section-identity">My Skills</h1>
                         <p>I am mainly good at these</p>
@@ -86,20 +88,25 @@ function Skills(){
                             </li>
                         </ul>
                     </div>
+                    </Parallax>
                 </div>
                 <div className = "section-side">
+                <Parallax className="custom-class" y={[60, 0]} tagOuter="figure">
                         <div className = "skills-pers">
                                 <GetSkills />
                         </div>
-                        <div class="load-more-hold">
+                        <div className="load-more-hold">
                             <button className="load-more" onClick={loadMore}>
                                 <label>Show More</label>
                                 <div className = "loader"></div>
                             </button>
                         </div>
+                        </Parallax>
                 </div>
                 <div className = "svg-hold">
-                    <img src = {Gear}/>
+                    <Parallax className="custom-class" y={[-20, 20]} tagOuter="figure">
+                        <img src = {Gear}/>
+                    </Parallax>
                 </div>
             </section>
     );

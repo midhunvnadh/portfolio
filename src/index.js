@@ -2,6 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './styles/main.scss';
 import App from './App';
+import {ParallaxProvider} from "react-scroll-parallax"
 ReactDOM.render(
-    <App />, document.getElementById('root')
+    <ParallaxProvider>
+        <App />
+    </ParallaxProvider>, document.getElementById('root')
 );

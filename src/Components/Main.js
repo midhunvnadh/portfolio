@@ -1,6 +1,7 @@
 import React from 'react';
 import port_pic from "../img/port_pic.png";
 import Particles from 'react-particles-js';
+import { Parallax } from 'react-scroll-parallax';
 class Main extends React.Component {
     render () {
        return (
@@ -88,6 +89,7 @@ class Main extends React.Component {
                     }
                 }
                 />
+                <Parallax className="custom-class" y={[0, 25]} tagOuter="figure">
                     <div className = "center">
                         <span className = "port_pic_holder">
                             <img src = {port_pic} alt = ""/>
@@ -102,6 +104,7 @@ class Main extends React.Component {
                             </p>
                         </div>
                     </div>
+                </Parallax>
                 </section>
         );
   }
