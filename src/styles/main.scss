@@ -100,9 +100,9 @@ $rs-breakpoint   : 728px;
 body{
     margin:0;
     @include defineScrollBar(#382933, #fff, #382933);
-    #root{
         .social{
             z-index: 2;
+            top:-17px;
             .icon-grp{
                 .social-icon{
                     img{
@@ -135,19 +135,12 @@ body{
                 $Width:100vw;
                 @include displayflex;
                 flex-direction: column;
-                backdrop-filter: blur(5px) opacity(0.8) sepia(5%);
+                background: $bg-wrap-lg;
+                @include bg-cover-full();
                 $Height:100vh;
                 height:120vh;
                 @media screen and (max-width:$rs-breakpoint){
                     justify-content: space-evenly;
-                }
-                #tsparticles{
-                    background: #ff7e67;
-                    width: 100vw;
-                    height:100%;
-                    position:absolute;
-                    z-index:-1;
-                    text-align: center;
                 }
                 .center{
                     @include displayflex;
@@ -186,13 +179,15 @@ body{
                             font-size: 25px;
                             h1{
                                 margin-block-start: 0.83em;
-                                margin-block-end: 0
+                                margin-block-end: 0;
+                                @include text-outline();
                             }
                         }
                         .my_info_desc{
                             @media screen and (min-width:$rs-breakpoint){
-                                font-size:14px;
+                                font-size:18px;
                                 padding: 0px 10px;
+                                @include text-outline();
                             }
                         }
                     }
@@ -455,7 +450,7 @@ body{
                             @media screen and (min-width:$rs-breakpoint) {
                                 &.row{
                                     input{
-                                        width: 278px;
+                                        width: 241px;
                                         margin-left: 0;margin-right: 0;
                                         &:first-child{
                                             margin-bottom: 0;
@@ -487,22 +482,4 @@ body{
                 }
             }
         }
-    }
 }
-.box {
-    width: 150px;
-    height: 150px;
-    border-radius: 1em;
-    background-color: #f9f07e;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  .magic {
-    width: 200px;
-    height: 200px;
-    background-color: #fff;
-    border-radius: 20px;
-    margin-left: auto;
-    margin-right: auto;
-  }

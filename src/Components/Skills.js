@@ -40,7 +40,7 @@ const loadMore = () => {
 const GetSkills = () => {
     const links = skillsInfo.slice(0,skillsInfo.length).map(({ skill, percent, show }) => {
         return(
-            <Reveal effect="fillPercent">
+            <Reveal effect="fillPercent" key = {skill}>
                 <div className = "skill" style = {{display:show}}>
                     <label>
                         {skill}
@@ -105,7 +105,7 @@ function Skills(){
                 </div>
                 <div className = "svg-hold">
                     <Parallax className="custom-class" y={[-20, 20]} tagOuter="figure">
-                        <img src = {Gear}/>
+                        <img src = {Gear} alt = ""/>
                     </Parallax>
                 </div>
             </section>

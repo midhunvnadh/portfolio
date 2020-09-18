@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
 import {faTelegram} from '@fortawesome/free-brands-svg-icons';
@@ -52,7 +52,7 @@ const Contact = () => {
             </div>
             <div className = "svg-hold">
                 <Parallax className="custom-class" y={[-20, 20]} tagOuter="figure">
-                    <img src = {MailSvg}/>
+                    <img src = {MailSvg} alt = ""/>
                 </Parallax>
             </div>
         </section>

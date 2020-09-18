@@ -1,14 +1,13 @@
 import React from 'react';
-import Tada from 'react-reveal/Tada';
 import YoutubeIcon from '../svg/youtube.svg';
 import TwitterIcon from '../svg/twitter.svg';
 import TelegramIcon from '../svg/telegram.svg';
 import InstagramIcon from '../svg/instagram.svg';
 import FacebookIcon from '../svg/facebook.svg';
+import {Parallax } from 'react-scroll-parallax';
 function Social(){
     return(
-        <div className = "social">
-            <Tada delay = {1000}>
+        <Parallax className="social" x={[0, 20]} tagOuter="div">
                 <div className="icon-grp">
                     <span className = "social-icon">
                         <img src = {YoutubeIcon} alt=""/>
@@ -26,8 +25,7 @@ function Social(){
                         <img src = {FacebookIcon} alt=""/>
                     </span>
                 </div>
-            </Tada>
-        </div>
+        </Parallax>
     );
 }
 export default Social;

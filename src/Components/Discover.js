@@ -4,7 +4,7 @@ function Discover(){
         <section className = "anim-section discover-page">
             <div className = "header">
                 <div className = "container">
-                    <h1 className = "section-identity">Discover Me !</h1>
+                    <h1 className = "section-identity">Discover Me</h1>
                     <p>You might be surprised !</p>
                 </div>
             </div>

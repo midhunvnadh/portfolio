@@ -60,7 +60,7 @@ function About(){
                 </div>
                 <div className = "svg-hold">
                         <Parallax className="custom-class" y={[0, 30]} tagOuter="figure">
-                            <img src = {SvgBoy}/>
+                            <img src = {SvgBoy} alt = ""/>
                         </Parallax>
                 </div>
             </section>

@@ -9,7 +9,6 @@ import Social   from './Components/Social'
 import "./styles/main.scss";
 function App() {
     return [
-
         <Main />,
         <Social />,
         <About />,
