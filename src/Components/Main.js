@@ -1,11 +1,10 @@
 import React from 'react';
 import port_pic from "../img/port_pic.png";
-import { Parallax } from 'react-scroll-parallax';
+import Social   from './Social'
 class Main extends React.Component {
     render () {
        return (
                 <section className = "home">
-                <Parallax className="custom-class" y={[0, 25]} tagOuter="figure">
                     <div className = "center">
                         <span className = "port_pic_holder">
                             <img src = {port_pic} alt = ""/>
@@ -19,8 +18,8 @@ class Main extends React.Component {
                                 <strong> Programmer</strong>
                             </p>
                         </div>
+                        <Social/>
                     </div>
-                </Parallax>
                 </section>
         );
   }
