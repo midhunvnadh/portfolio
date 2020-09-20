@@ -1,24 +1,32 @@
+/* Get Dependencies*/
 import React from 'react';
+/* Get Components */
+import Loader   from './Components/PageLoader'
 import Main     from './Components/Main';
 import About    from './Components/About';
-import Skills     from './Components/Skills';
+import Skills   from './Components/Skills';
 import Contact  from './Components/Contact';
-import Discover from './Components/Discover';
+import Specials from './Components/Special';
 import Footer   from './Components/Footer';
 import Social   from './Components/Social'
-import "./styles/bulma.min.css";
+
+/* Get StyleSheet */
 import "./styles/main.scss";
-function App() {
-    return (
-        <>
-            <Main />
-            <About />
-            <Skills />
-            <Contact/>
-            <Discover />
-            <Social/>
-            <Footer />
-        </>
-    );
+
+class App extends React.Component {
+    render(){
+        return (
+            <>
+                <Loader/>
+                <Main />
+                <About />
+                <Skills />
+                <Contact/>
+                <Specials />
+                <Social/>
+                <Footer />
+            </>
+        );
+    }
 }
 export default App

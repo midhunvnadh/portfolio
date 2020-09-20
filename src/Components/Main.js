@@ -1,6 +1,5 @@
 import React from 'react';
 import port_pic from "../img/port_pic.png";
-
 class Main extends React.Component {
     render () {
        return (
@@ -27,6 +26,20 @@ class Main extends React.Component {
                         <div className = "level-right">
                             <div className = "nav-bar-holder">
                                 <span className = "NavBar"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div className = "container pt-6">
+                        <div className = "columns">
+                            <div className = "other-links column is-12-mobile has-text-right is-size-1-desktop is-size-2-touch">
+                                <ul className = "">
+                                    <li>
+                                        Skill Board
+                                    </li>
+                                    <li>
+                                        Project List
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>

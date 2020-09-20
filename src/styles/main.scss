@@ -1,141 +1,52 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Roboto+Slab&display=swap');
 
-$colorPrim: #3c4245;
-$colorSec : #5f6769;
-$colorTri : #719192;
-$colorQua : #dfcdc3;
-@mixin pageTheme(){
-    *{transition:all 0.3s ease-in-out;}
-    header{
-        &.section{
-            background-color: $colorPrim;
-            .container{
-                .level-left{
-                    .hero{
-                        .hero-body{
-                            .container{
-                                .title{
-                                    color:$colorQua;
-                                    font-family: 'Roboto Mono', sans-serif;
-                                    letter-spacing: 2px;
-                                }
-                                .subtitle, *{
-                                    color:$colorTri;
-                                    font-family: 'Roboto Mono', sans-serif;
-                                    letter-spacing: 1px;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-    section{
-        .container{
-            .columns{
-                .column{
-                    .container{
-                        ul{
-                            li{
-                                label{
-                                    a{
-                                        color: $colorPrim;
-                                    }
-                                }
-                            }
-                        }
-                        .title{
-                            font-family: 'Roboto Mono', sans-serif;
-                        }
-                        .subtitle{
-                            font-family: 'Roboto Mono', sans-serif;
-                        }
-                    }
-                    &.content{
-                        p{
-                            letter-spacing: 1px;
-                        }
-                    }
-                }
-            }
-        }
-        &:nth-child(odd){
-            background-color: $colorSec;
-            .container{
-                .columns{
-                    .column{
-                        .container{
-                            h1{color:$colorQua}
-                            h2{color:$colorTri}
-                            ul{
-                                li{
-                                    color: $colorTri;
-                                }
-                            }
-                        }
-                        .skills-pers{
-                            .skill-progress{
-                                label{
-                                    background-color: $colorTri;
-                                    svg{
-                                        color:$colorPrim
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-    .social-info{
-        background-color: $colorQua;
-        .columns{
-           .column{
-                .hero-body{
-                    .container{
-                       h1{
-                           color: $colorPrim;
-                            font-family: 'Roboto Mono', sans-serif;
-                        }
-                       h2{
-                           color: $colorSec;
-                            font-family: 'Roboto Mono', sans-serif;
-                        }
-                    }
-                }
-                svg{
-                    color:$colorPrim;
-                }
-            }
-        }
-    }
-    footer{
-        &.footer{
-            font-family: 'Roboto Mono', sans-serif;
-            background: $colorPrim;
-            color: $colorQua;
-        }
-    }
-    a{
-        color:unset;
-        text-decoration: none;
-        filter: hue-rotate(180deg);
-        &:hover{
-            text-decoration: underline;
-            color: unset!important;
-        }
-    }
-}
-
+@import "bulma";
+@import "theme";
 
 html{
     scroll-behavior: smooth;
+    @include pageTheme(#3c4245, #5f6769, #719192, #dfcdc3);
     body{
-        @include pageTheme();
+        .loader-hold{
+            position:fixed;
+            top:0;
+            left:0;
+            height: 100%;
+            width:100%;
+            z-index:999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .logonholder{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                flex-direction: column;
+                figure{
+                    img{
+                        height: 100px;
+                        width:100px
+                    }
+                }
+                .loader{
+                    height: 30px;
+                    width: 30px;
+                    margin-block-start:30px;
+                }
+            }
+        }
         header{
             min-height: 100vh;
+            .container{
+                .columns{
+                    .other-links{
+                        ul{
+                            li{
+                            }
+                        }
+                    }
+                }
+            }
         }
         section{
             min-height: 100px;
@@ -179,6 +90,7 @@ html{
                                     label{
                                         vertical-align: super;
                                     }
+                                    overflow-wrap: anywhere;
                                 }
                             }
                         }
@@ -233,7 +145,6 @@ html{
             }
         }
         .social-info{
-            background-color: $colorQua;
             .columns{
                .column{
                     .columns{
@@ -247,6 +158,45 @@ html{
                     }
                 }
             }
+        }
+        footer{
+            position: relative;
+            .content{
+                .go-to-top{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 50px;height: 50px;
+                    position: absolute;
+                    top: -25px;
+                    right: 25px;
+                }
+            }
+            .power-by{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                figure{
+                    display: inline-block;
+                    padding:6px 10px 0 10px;
+                    img{
+                        width: 100px;
+                    }
+                }
+                svg{
+                    font-size: 28px;
+                }
+            }
+        }
+        .sitePointer{
+            position: fixed;
+            height: 30px;
+            width: 30px;
+            background: rgba(0,0,225,0.8);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index:99999999999;
+	        mix-blend-mode: difference;
         }
     }
 }

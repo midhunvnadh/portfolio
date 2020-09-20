@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Roboto+Slab&display=swap');
+@mixin pageTheme($colorPrim, $colorSec, $colorTri, $colorQua){
+    body{
+        #root{
+            *{transition:all 0.3s ease-in-out;}
+            .loader-hold{
+                background: $colorPrim;
+            }
+            header{
+                &.section{
+                    background-color: $colorPrim;
+                    .container{
+                        .level-left{
+                            .hero{
+                                .hero-body{
+                                    .container{
+                                        .title{
+                                            color:$colorQua;
+                                            font-family: 'Roboto Mono', sans-serif;
+                                            letter-spacing: 2px;
+                                        }
+                                        .subtitle, *{
+                                            color:$colorTri;
+                                            font-family: 'Roboto Mono', sans-serif;
+                                            letter-spacing: 1px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        .columns{
+                            .other-links{
+                                ul{
+                                    li{
+                                        color:$colorQua;
+                                        font-family: 'Roboto Mono';
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            section{
+                .container{
+                    .columns{
+                        .column{
+                            .container{
+                                ul{
+                                    li{
+                                        font-weight: 600;
+                                        label{
+                                            a{
+                                                color: $colorPrim;
+                                            }
+                                        }
+                                    }
+                                }
+                                .title{
+                                    font-family: 'Roboto Mono', sans-serif;
+                                }
+                                .subtitle{
+                                    font-family: 'Roboto Mono', sans-serif;
+                                    margin-inline-start: 1px;
+                                }
+                                form{
+                                    input, textarea{
+                                        border-color: $colorSec;
+                                    }
+                                }
+                            }
+                            &.content{
+                                p{
+                                    letter-spacing: 1px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            & > section.hero.skills-page, & > section.hero.discover-page, & > section.hero.special-page{
+                background-color: $colorSec;
+                .container{
+                    .columns{
+                        .column{
+                            .container{
+                                h1{color:$colorQua}
+                                h2{color:$colorTri}
+                                ul{
+                                    li{
+                                        color: $colorTri;
+                                    }
+                                }
+                            }
+                            .skills-pers{
+                                .skill-progress{
+                                    label{
+                                        background-color: $colorTri;
+                                        svg{
+                                            color:$colorPrim
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .social-info{
+                background-color: $colorQua;
+                .columns{
+                   .column{
+                        .hero-body{
+                            .container{
+                               h1{
+                                   color: $colorPrim;
+                                    font-family: 'Roboto Mono', sans-serif;
+                                }
+                               h2{
+                                   color: $colorSec;
+                                    font-family: 'Roboto Mono', sans-serif;
+                                }
+                            }
+                        }
+                        svg{
+                            color:$colorPrim;
+                        }
+                    }
+                }
+            }
+            footer{
+                &.footer{
+                    font-family: 'Roboto Mono', sans-serif;
+                    background: $colorPrim;
+                    color: $colorQua;
+                }
+                .content{
+                    .go-to-top{
+                        background: $colorSec;
+                    }
+                }
+            }
+            a{
+                color:unset;
+                text-decoration: none;
+                filter: hue-rotate(180deg);
+                &:hover{
+                    text-decoration: underline;
+                    color: unset!important;
+                }
+            }
+        }
+    }
+}

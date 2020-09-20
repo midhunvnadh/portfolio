@@ -13,7 +13,7 @@ function Social(){
                         </div>
                     </div>
                 </div>
-                <div className = "column is-6">
+                <div className = "column is-6 py-6">
                     <div className="columns is-mobile">
                         <div className = "column is-gapless">
                             <figure className= "icon ">

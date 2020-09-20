@@ -21,19 +21,23 @@ const skillsInfo = [
 ];
 const loadMore = () => {
     var skills = document.querySelectorAll("section .skills-pers .skill-progress"), i
-    const moreBtnLabel = document.querySelector(".load-more label")
-    if(skills[8].style.display === "none"){
-        for (i = 8; i < skillsInfo.length; i++){
-            skills[i].style.display = "block";
+    const moreBtn = document.querySelector(".load-more");
+        if(skills[8].style.display === "none"){
+            moreBtn.classList.add("is-loading");
+            setTimeout(function(){
+                for (i = 8; i < skillsInfo.length; i++){
+                    skills[i].style.display = "block";
+                }
+                moreBtn.innerHTML = "Show Less"
+                moreBtn.classList.remove("is-loading");
+            },600);
         }
-        moreBtnLabel.innerHTML = "Show Less"
-    }
-    else{
-        for (i = 8; i < skillsInfo.length; i++){
-            skills[i].style.display = "none";
+        else{
+            for (i = 8; i < skillsInfo.length; i++){
+                skills[i].style.display = "none";
+            }
+            moreBtn.innerHTML = "Show More"
         }
-        moreBtnLabel.innerHTML = "Show More"
-    }
 }
 const GetSkills = () => {
    var links = skillsInfo.slice(0,skillsInfo.length).map(({ skill, icon, percent, show }) => {
@@ -56,7 +60,7 @@ const Skills = () => {
                             <div className = "container">
 
                                 <h1 className = "title">My Skills</h1>
-                                <h2 className = "subtitle">I am mainly good at these</h2>
+                                <h2 className = "subtitle">I speak these</h2>
                                 <ul className = "content">
                                     <li>
                                         <FontAwesomeIcon icon={faWordpress} />
@@ -92,8 +96,7 @@ const Skills = () => {
                                 <div className="load-more-hold">
                                     <div className = "buttons">
                                         <button className="load-more button is-rounded is-primary" onClick={loadMore}>
-                                            <label>Show More</label>
-                                            <div className = "loader"></div>
+                                            Show More
                                         </button>
                                     </div>
                                 </div>
