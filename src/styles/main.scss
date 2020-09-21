@@ -1,10 +1,11 @@
-
 @import "bulma";
 @import "theme";
+@import "animations";
 
 html{
     scroll-behavior: smooth;
-    @include pageTheme(#3c4245, #5f6769, #719192, #dfcdc3);
+    //@include pageTheme(#3c4245, #5f6769, #719192, #dfcdc3);
+    @include pageTheme(#1b262c, #0f4c75, #3282b8,#bbe1fa);
     body{
         .loader-hold{
             position:fixed;
@@ -102,9 +103,9 @@ html{
                                     height:2rem;
                                 }
                                 label{
-                                    left:-10px;
+                                    left:0px;
                                     bottom:0;
-                                    top:-10px;
+                                    top:0px;
                                     width: 2.3rem;
                                     height: 2.3rem;
                                     background-color: #000;
@@ -115,6 +116,89 @@ html{
                                     align-items: center;
                                     svg{
                                         font-size: 21px;
+                                    }
+                                }
+                            }
+                        }
+                        .cards{
+                            $breakPoint:980px;
+                            $height:300px;
+                            .card-holder{
+                                margin-block-end: 10px;
+                                .card{
+                                    .card-content{
+                                        .media-content{
+                                            overflow-x: inherit;
+                                        }
+                                    }
+                                }
+                            }
+                            position: relative;
+                            height: $height;
+                            @media screen and (max-width:$breakPoint){
+                                height:$height+160;
+                            }
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;                
+                            .card-holder{
+                                outline: none;
+                                border: none;
+                                box-shadow: none;
+                                *{
+                                    user-select: none;
+                                }
+                                position: absolute;
+                                $card-width:230px;
+                                width: $card-width+5px;
+                                height:$height;
+                                cursor: pointer;
+                                right:30%;
+                                @media screen and (max-width:$breakPoint){
+                                    width:auto;
+                                    right:0;
+                                    left:0;
+                                }
+                                .card{
+                                    width:$card-width;
+                                    height: 329px;
+                                    border-radius: 7px;
+                                    box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.6), 0 0 4px 1px rgba(10, 10, 10, 0.42);
+                                    @media screen and (max-width:$breakPoint){
+                                        width:100%;
+                                        height:auto;
+                                    }
+                                    &:hover{
+                                        transform:translateY(-45px);
+                                        @media screen and (max-width:$breakPoint){
+                                            transform: unset;
+                                        }
+                                    }
+                                }
+                                @for $i from 1 through 3{
+                                    &:nth-child(#{$i}){
+                                        $transX : $i * 25px;
+                                        z-index: $i*2;
+                                        top:-75px;
+                                        transform:translateX($transX) translateY(25px*$i);
+                                        @media screen and (max-width:$breakPoint){
+                                            transform:translateY(55px*$i);
+                                            top:0;
+                                        }
+                                    }
+                                }
+                                &:focus{
+                                    z-index:2;
+                                    .card{
+                                        transform:translateX(-300px);
+                                        @media screen and (max-width:$breakPoint){
+                                            transform:scale(1.1);
+                                            z-index:500;
+                                            animation: pickCard 1s linear;
+                                        }
+                                    }
+                                    @media screen and (max-width:$breakPoint){
+                                        z-index:500;
                                     }
                                 }
                             }
@@ -170,6 +254,7 @@ html{
                     position: absolute;
                     top: -25px;
                     right: 25px;
+                    cursor: pointer;
                 }
             }
             .power-by{

@@ -49,23 +49,32 @@
                                 ul{
                                     li{
                                         font-weight: 600;
-                                        label{
-                                            a{
-                                                color: $colorPrim;
-                                            }
-                                        }
+                                        label,svg{color: $colorPrim;}
                                     }
                                 }
                                 .title{
                                     font-family: 'Roboto Mono', sans-serif;
+                                    color:$colorPrim;
                                 }
                                 .subtitle{
                                     font-family: 'Roboto Mono', sans-serif;
                                     margin-inline-start: 1px;
+                                    color: $colorTri;
                                 }
                                 form{
                                     input, textarea{
-                                        border-color: $colorSec;
+                                        border:2px solid $colorTri;
+                                    }
+                                    .control{
+                                        button{
+                                            &.button{
+                                                background:$colorTri;
+                                                &.is-light{
+                                                    background: unset;
+                                                    color:$colorTri;
+                                                }
+                                            }
+                                        }
                                     }
                                 }
                             }
@@ -84,12 +93,21 @@
                     .columns{
                         .column{
                             .container{
-                                h1{color:$colorQua}
-                                h2{color:$colorTri}
                                 ul{
                                     li{
-                                        color: $colorTri;
+                                        label,svg{
+                                            color: $colorQua;
+                                        }
                                     }
+                                }
+                                .title{
+                                    font-family: 'Roboto Mono', sans-serif;
+                                    color:$colorQua;
+                                }
+                                .subtitle{
+                                    font-family: 'Roboto Mono', sans-serif;
+                                    margin-inline-start: 1px;
+                                    color: $colorTri;
                                 }
                             }
                             .skills-pers{

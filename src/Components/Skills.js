@@ -1,57 +1,66 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faCode, faPen, faTerminal, faCloud} from '@fortawesome/free-solid-svg-icons'
-import { faWordpress, faGoogle, faDev, faReact, faHtml5, faCss3, faPython, faJs, faPhp, faJava, faAdobe, faRaspberryPi, faLinux } from '@fortawesome/free-brands-svg-icons'
+import data from "./data/EN_US/skills.json"
 
-const skillsInfo = [
-    {skill:"HTML5", percent:"98", show:"block", icon:faHtml5},
-    {skill:"CSS3", percent:"98", show:"block", icon:faCss3},
-    {skill:"PHP", percent:"95", show:"block", icon:faPhp},
-    {skill:"Javascript", percent:"98", show:"block", icon:faJs},
-    {skill:"TypeScript", percent:"98", show:"block", icon:faCode},
-    {skill:"Typography", percent:"86", show:"block", icon:faPen},
-    {skill:"Python", percent:"90", show:"block", icon:faPython},
-    {skill:"Kotlin", percent:"90", show:"block", icon:faJava},
-    {skill:"React", percent:"60", show:"none", icon:faReact},
-    {skill:"Bash", percent:"90", show:"none", icon:faTerminal},
-    {skill:"Cloud Computing", percent:"70", show:"none", icon:faCloud},
-    {skill:"Creative Cloud", percent:"80", show:"none", icon:faAdobe},
-    {skill:"Raspberry Pi", percent:"85", show:"none", icon:faRaspberryPi},
-    {skill:"Linux Kernel", percent:"60", show:"none", icon:faLinux}
-];
-const loadMore = () => {
-    var skills = document.querySelectorAll("section .skills-pers .skill-progress"), i
-    const moreBtn = document.querySelector(".load-more");
-        if(skills[8].style.display === "none"){
-            moreBtn.classList.add("is-loading");
-            setTimeout(function(){
-                for (i = 8; i < skillsInfo.length; i++){
-                    skills[i].style.display = "block";
-                }
-                moreBtn.innerHTML = "Show Less"
-                moreBtn.classList.remove("is-loading");
-            },600);
+const DisplaySectionIcons = () => {
+    var icons = data.skills.sec_icons.map(
+        ({name, text, key, icon}) => {
+            return(
+                <li key = {key}>
+                    <FontAwesomeIcon icon = {icon}/>
+                    <label>
+                        {text}
+                    </label>
+                </li>
+            );
+        }
+    );
+    return icons;
+}
+
+class Skills extends React.Component{
+    constructor(props) {
+        super(props);
+        this.state = {
+            skillsToLoad:data.skills.skills,
+            visible:6,
+        };
+        this.loadMore = this.loadMore.bind(this);
+    }
+    componentDidMount(){
+        this.showMoreBtn = document.querySelector(".load-more-hold .buttons .load-more");
+    }
+    loadSkills() {
+        var links = data.skills.skills.slice(
+            (prev) => { 
+                return {visible: prev.visible};
+            }, 
+            this.state.visible
+        ).map(({ skill, icon, percent}) => {
+                return(
+                    <div className = "skill-progress column is-half" key={skill}>
+                        <label><FontAwesomeIcon icon={icon} /></label>
+                        <progress className="progress is-large is-success" value={percent} max="100">60%</progress>
+                    </div>
+                );
+        })
+        return links;
+    }
+    loadMore(){
+        this.showMoreBtn.classList.add("is-loading");
+        if(this.state.visible < this.state.skillsToLoad.length){
+            this.setState((prev) => {
+                return {visible: prev.visible + 4};
+            });
         }
         else{
-            for (i = 8; i < skillsInfo.length; i++){
-                skills[i].style.display = "none";
-            }
-            moreBtn.innerHTML = "Show More"
+            this.setState((prev) => {
+                return {visible: prev.visible - 8};
+            });
         }
-}
-const GetSkills = () => {
-   var links = skillsInfo.slice(0,skillsInfo.length).map(({ skill, icon, percent, show }) => {
-        return(
-            <div className = "skill-progress column is-half" style = {{display:show}} key={skill}>
-                <label><FontAwesomeIcon icon={icon} /></label>
-                <progress className="progress is-large is-primary" value={percent} max="100">60%</progress>
-            </div>
-        );
-    });
-    return links;
-}
-
-const Skills = () => {
+        this.showMoreBtn.classList.remove("is-loading");
+    }
+    render(){
         return(
             <section className = "hero skills-page">
                 <div className = "container is-fluid">
@@ -62,42 +71,24 @@ const Skills = () => {
                                 <h1 className = "title">My Skills</h1>
                                 <h2 className = "subtitle">I speak these</h2>
                                 <ul className = "content">
-                                    <li>
-                                        <FontAwesomeIcon icon={faWordpress} />
-                                        <label>
-                                            Wordpress
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <FontAwesomeIcon icon={faGoogle} />
-                                        <label>
-                                            SEO Optimization
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <FontAwesomeIcon icon={faDev} />
-                                        <label>
-                                            Web Design & Development
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <FontAwesomeIcon icon={faReact} />
-                                        <label>
-                                            React.js
-                                        </label>
-                                    </li>
+                                    <DisplaySectionIcons />
                                 </ul>
                             </div>
                         </div>
                         <div className = "column content is-two-thirds">
                                 <div className = "skills-pers columns">
-                                        <GetSkills />
+                                    {this.loadSkills()}
                                 </div>
                                 <div className="load-more-hold">
                                     <div className = "buttons">
-                                        <button className="load-more button is-rounded is-primary" onClick={loadMore}>
-                                            Show More
-                                        </button>
+                                            <button className="load-more button is-rounded is-success" onClick={this.loadMore}>
+                                                { (this.state.visible < this.state.skillsToLoad.length) &&
+                                                    <>Load more</>
+                                                }
+                                                { (this.state.visible >= this.state.skillsToLoad.length) &&
+                                                    <>Show less</>
+                                                }
+                                            </button>
                                     </div>
                                 </div>
                         </div>
@@ -105,5 +96,6 @@ const Skills = () => {
                 </div>
             </section>
         );
+    }
 }
 export default Skills;

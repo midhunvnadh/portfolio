@@ -1,0 +1,53 @@
+body{
+    .lightSpeedUp{
+        animation:lightSpeedUp;
+        @keyframes lightSpeedUp{
+            from{
+                transform:skewY(10deg) translateY(200px);
+            }
+            to{
+                transform:skewY(0) translateY(0);
+            }
+        }
+    }
+    .flyFromLeft{
+        animation: flyFromLeft;
+        @keyframes flyFromLeft{
+            from{
+                transform:translateX(-200px);
+            }
+            to{
+                transform:translateX(0);
+            }
+        }
+    }
+    .flyFromRight{
+        animation: flyFromRight;
+        @keyframes flyFromRight{
+            from{
+                transform:translateX(200px);
+                opacity: 0;
+            }
+            to{
+                transform:translateX(0);
+                opacity:1
+            }
+        }
+    }
+    .pickCard{
+        animation: pickCard;
+        @keyframes pickCard{
+            0%{
+                transform: translateY(0px) scale(1);
+                opacity: 1;
+            }
+            50%{
+                transform: translateY(-100%);
+            }
+            100%{
+                transform: translateY(0px) scale(1.1);
+                opacity: 1;
+            }
+        }
+    }
+}

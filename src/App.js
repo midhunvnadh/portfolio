@@ -1,7 +1,6 @@
 /* Get Dependencies*/
 import React from 'react';
 /* Get Components */
-import Loader   from './Components/PageLoader'
 import Main     from './Components/Main';
 import About    from './Components/About';
 import Skills   from './Components/Skills';
@@ -17,7 +16,6 @@ class App extends React.Component {
     render(){
         return (
             <>
-                <Loader/>
                 <Main />
                 <About />
                 <Skills />

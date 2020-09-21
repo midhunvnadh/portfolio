@@ -1,62 +1,50 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFlag, faBirthdayCake, faCrosshairs, faAward } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Reveal from 'react-reveal/Reveal'
+import data from './data/EN_US/about.json';
 
-const GetAge = () => {
-    var today = new Date();
-    var birthDate = new Date("2002/01/16");
-    var age = today.getFullYear() - birthDate.getFullYear();
-    var m = today.getMonth() - birthDate.getMonth();
-    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-        age--;
-    }
-    return age;
+const DisplaySectionIcons = () => {
+    var icons = data.about.sec_icons.map(
+        ({name, text, key, icon}) => {
+            return(
+                <li key = {key}>
+                    <FontAwesomeIcon icon = {icon}/>
+                    <label>
+                        {text}
+                    </label>
+                </li>
+            );
+        }
+    );
+    return icons;
 }
-function About(){
-    return(
+class About extends React.Component{
+    componentDidMount(){
+    }
+    render(){
+        return(
             <section className = "hero about-page">
                 <div className="container is-fluid">
                     <div className = "columns  px-4">
                         <div className = "column is-one-third">
                             <div className = "container">
-                                <h1 className = "title">About Me</h1>
-                                <h2 className = "subtitle">A Summary</h2>
-                                <ul className = "content">
-                                    <li>
-                                        <FontAwesomeIcon icon={faBirthdayCake} />
-                                        <label>
-                                            <GetAge /> Years Old
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <FontAwesomeIcon icon={faFlag}/>
-                                        <label>
-                                            Indian
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <FontAwesomeIcon icon={faCrosshairs}/>
-                                        <label>
-                                            Determined
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <FontAwesomeIcon icon={faAward}/>
-                                        <label>
-                                            6 Years Experience
-                                        </label>
-                                    </li>
-                                </ul>
+                            <Reveal effect = "flyFromLeft">
+                                    <h1 className = "title">About Me</h1>
+                                    <h2 className = "subtitle">A Summary</h2>
+                                    <ul className = "content">
+                                        <DisplaySectionIcons/>
+                                    </ul>
+                                </Reveal>
                             </div>
                         </div>
-                        <div className = "column content is-two-thirds">
-                            <p>Hi, I am a <strong>full stack developer</strong> from Kollam, Kerala, India and is extremely <strong>passionate</strong> about computers. I am currently doing B.Tech in <strong>Computer Science</strong>. I would gladly like to offer you the best of art <strong>custom tailored technical support</strong> with freelance attractive <strong>web development</strong> projects that can hit right at the <strong>bulls-eye</strong>.</p>
-                            <p>Apart from being a full stack developer, I develop <strong>Custom ROM's</strong> for Android devices and am a big fan of <strong>Ubuntu Touch</strong> or Linux-on-android projects. Interested in <strong>Android Kernels</strong> and tweaking it to get more cool features.</p>
-                            <p>I assure you to make the <strong>best for you</strong> and I make sure that my passion shall reflect on this <strong>page</strong>.</p>
-                        </div>
+                        <Reveal effect = "lightSpeedUp">
+                            <div className = "column content is-two-thirds" dangerouslySetInnerHTML={ { __html: data.about.sec_content } }>
+                            </div>
+                        </Reveal>
                     </div>
                 </div>
             </section>
-    );
+        );
+    }
 }
 export default About;
