@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#3e424e" />
     <meta
       name="description"
@@ -12,9 +12,27 @@
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <title>Midhun V Nadh</title>
+    <style>
+      @keyframes rotate-loader{
+        to{transform: rotate(360deg);}
+      }
+      .loader-self:after{
+        position: absolute;
+        content:"";
+        height:30px;
+        width: 30px;
+        border: 2px solid #ccc;
+        border-left:2px solid transparent;
+        border-radius: 50%;
+        animation:rotate-loader 0.8s linear infinite;
+        display: block;
+        bottom: -5px;
+      }
+    </style>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <noscript><h1 class = "title">You need to turn on JavaScript to run this Website.</h1></noscript>
+    <div id = "loader-hold" style = "transition:all 0.3s ease;background: #383131;position:fixed;top:0;left:0;right:0;bottom:0;z-index:999;display: flex;justify-content: center;align-items: center;"><style>body, html{overflow-y:hidden;}</style><div style = "display: flex;justify-content: center;align-items: center;text-align: center;flex-direction: column;width: 300px;height:300px;"><figure><img src = "logo192.png" height="100" width = "100" alt =""/></figure><div class = "loader-self" style = "height: 30px;width: 30px;margin-block-start:30px;position: relative;"></div></div></div>
     <div id = "root"></div>
   </body>
 </html>

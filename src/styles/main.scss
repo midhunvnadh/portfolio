@@ -2,55 +2,149 @@
 @import "theme";
 @import "animations";
 
+
+$cards-breakpoint:980px;
+
 html{
     scroll-behavior: smooth;
-    //@include pageTheme(#3c4245, #5f6769, #719192, #dfcdc3);
-    @include pageTheme(#1b262c, #0f4c75, #3282b8,#bbe1fa);
     body{
-        .loader-hold{
-            position:fixed;
-            top:0;
-            left:0;
-            height: 100%;
-            width:100%;
-            z-index:999;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            .logonholder{
+        overflow-x: hidden;
+        *{transition: all 0.3s linear;}
+        header{
+            min-height: 100px;
+            .site-settings{
+                -webkit-tap-highlight-color: transparent;
+                width: 70px;
+                height: 70px;
+                border-radius: 50%;
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                text-align: center;
-                flex-direction: column;
-                figure{
-                    img{
-                        height: 100px;
-                        width:100px
-                    }
+                cursor: pointer;
+                position: fixed;
+                bottom: 40px;
+                left:20px;
+                z-index:300;
+                box-shadow: 0 0 16px 0px rgba(0,0,0,0.23);
+                .settings-icon{
+                    font-size: 35px;
                 }
-                .loader{
-                    height: 30px;
-                    width: 30px;
-                    margin-block-start:30px;
-                }
-            }
-        }
-        header{
-            min-height: 100vh;
-            .container{
-                .columns{
-                    .other-links{
-                        ul{
-                            li{
+                .inside-settings{
+                    box-shadow: 0 0 23px -1px rgba(0,0,0,0.3);
+                    padding:10px;
+                    position: absolute;
+                    display: block;
+                    width: 300px;
+                    bottom:75px;
+                    left:-15px;
+                    border-radius: 10px;
+                    transform:rotateX(-90deg);
+                    transition: all 0.4s ease-in-out;
+                    transform-origin: bottom;
+                    overflow: hidden;
+                    form{
+                        flex-wrap: wrap;
+                        .column{
+                            justify-content: center;
+                            .control{
+                                .icon{
+                                    font-family: 'Roboto Mono', sans-serif;
+                                }
                             }
                         }
+                        .colorSchemes{
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            .c-scheme{
+                                span{
+                                    width: 30px;
+                                    height:30px;
+                                    margin: 5px;
+                                    border-radius: 10px;
+                                    display: inline-block;
+                                    border:1px solid rgba(0, 0, 0, 0.1);
+                                }
+                            }
+                            .icon-cs{
+                                font-size: 25px;
+                                margin-top: -3px;
+                                width:20px;
+                            }
+                        }
+                    }
+                }
+                &:hover{
+                    .inside-settings{
+                            transform:rotateX(0);
+                    }
+                }
+            }
+            .css-terminal{
+                box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+                left: 50%;
+                border-radius: 10px;
+                overflow: hidden;
+                width: 100%;
+                .ui-actions{
+                    height: 30px;
+                    background: #fff;
+                    width: 100%;
+                    display: block;
+                    position: relative;
+                    .window-actions{
+                        position: absolute;
+                        height: 17px;
+                        width: 17px;
+                        left: 10px;
+                        top:5px;
+                        display: inline-block;
+                        background: #ff5c5c;
+                        border-radius: 50%;
+                        &:before, &:after{
+                            content: '';
+                            position: absolute;
+                            height: 17px;
+                            width: 17px;
+                            display: inline-block;
+                            border-radius: 50%;
+                        }
+                        &:after{
+                            left: 52px;
+                            background: #00ca56;
+                        }
+                        &:before{
+                            left: 27px;
+                            background: #ffbd4c;
+                        }
+                    }
+                }
+                .terminal{
+                    text-align: left;
+                    background: #000;
+                    height: 200px;
+                    padding: 3px;
+                    *{font-family: 'Roboto Mono';}
+                    .terminal-bash{
+                        .domain{
+                            color: yellow;
+                            font-weight: bolder;
+                        }
+                        .blue{
+                            color: blue;
+                            font-weight: bolder;
+                        }
+                    }
+                    color: #ffff;
+                    .blinkingCursor{
+                        animation:1s blink step-end infinite;
+                        font-weight: bolder;
                     }
                 }
             }
         }
         section{
-            min-height: 100px;
+            min-height: 90px;
             padding:100px 0;
             .container{
                 .columns{
@@ -103,27 +197,54 @@ html{
                                     height:2rem;
                                 }
                                 label{
+                                    overflow: hidden;
+                                    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
                                     left:0px;
                                     bottom:0;
                                     top:0px;
-                                    width: 2.3rem;
                                     height: 2.3rem;
-                                    background-color: #000;
                                     position: absolute;
-                                    border-radius: 50%;
+                                    border-radius: 5000px;
                                     display: flex;
+                                    white-space: nowrap;
                                     justify-content: center;
                                     align-items: center;
+                                    transition: all 1s cubic-bezier(.87,.14,.47,.98);
+                                    width: 2.3rem;
                                     svg{
                                         font-size: 21px;
+                                        position: absolute;
+                                        transform:translateX(50%, -50%);
+                                    }
+                                    .hidden{
+                                        overflow: hidden;
+                                        opacity: 0;
+                                        font-weight: 800;
+                                        position: relative;
+                                    }
+                                }
+                                &:hover{
+                                    label{
+                                        transition: all 0.2s cubic-bezier(.87,.14,.47,.98);
+                                        padding: 0 10px;
+                                        width: 50%;
+                                        svg{
+                                            display: none;
+                                        }
+                                        .hidden{
+                                            width: 100%;
+                                            margin:0 8px;
+                                            opacity: 1;
+                                        }
                                     }
                                 }
                             }
                         }
                         .cards{
-                            $breakPoint:980px;
+                            $breakPoint:$cards-breakpoint;
                             $height:300px;
                             .card-holder{
+                                -webkit-tap-highlight-color: transparent;
                                 margin-block-end: 10px;
                                 .card{
                                     .card-content{
@@ -137,6 +258,7 @@ html{
                             height: $height;
                             @media screen and (max-width:$breakPoint){
                                 height:$height+160;
+                                transform: translateX(20px);
                             }
                             display: flex;
                             justify-content: center;
@@ -156,6 +278,7 @@ html{
                                 right:30%;
                                 @media screen and (max-width:$breakPoint){
                                     width:auto;
+                                    height:auto;
                                     right:0;
                                     left:0;
                                 }
@@ -163,10 +286,10 @@ html{
                                     width:$card-width;
                                     height: 329px;
                                     border-radius: 7px;
-                                    box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.6), 0 0 4px 1px rgba(10, 10, 10, 0.42);
                                     @media screen and (max-width:$breakPoint){
-                                        width:100%;
+                                        width:auto;
                                         height:auto;
+                                        animation-delay: none!important;
                                     }
                                     &:hover{
                                         transform:translateY(-45px);
@@ -182,9 +305,19 @@ html{
                                         top:-75px;
                                         transform:translateX($transX) translateY(25px*$i);
                                         @media screen and (max-width:$breakPoint){
-                                            transform:translateY(55px*$i);
+                                            transform:translateY(55px*$i) translateX(-10px*$i) scale(0.9);
                                             top:0;
                                         }
+                                    }
+                                }
+                                @media screen and (max-width:$breakPoint){
+                                    &:nth-child(3):focus .card{
+                                        animation:none!important;
+                                        transform: scale(1.2);
+                                    }
+                                    &:nth-child(3):not(:focus) .card{
+                                        animation:none!important;
+                                        transform: scale(1.1);
                                     }
                                 }
                                 &:focus{
@@ -194,12 +327,43 @@ html{
                                         @media screen and (max-width:$breakPoint){
                                             transform:scale(1.1);
                                             z-index:500;
-                                            animation: pickCard 1s linear;
+                                            animation: pickCard 1s linear!important;
                                         }
                                     }
                                     @media screen and (max-width:$breakPoint){
+                                        z-index:520;
+                                    }
+                                }
+                                @media screen and (max-width:$breakPoint){
+                                    &:not(:focus){
+                                        z-index:1;
+                                        .card{
+                                            transform:translateX(-300px);
+                                            transform:scale(1.1);
+                                            z-index:500;
+                                            animation: putCardBack 1s linear!important;
+                                        }
                                         z-index:500;
                                     }
+                                }
+                            }
+                        }
+                        .cards{
+                            div{
+                                &.subtitle{
+                                    &.th-core{
+                                        @media screen and (max-width:$cards-breakpoint){
+                                            display: none;
+                                        }
+                                        width: 300px;
+                                        transform: rotateZ(-90deg) translateY(-220px) translateX(0px);
+                                        text-align: center;
+                                        font-size: 35px;
+                                        font-weight: bolder;
+                                        opacity: 0.3!important;
+                                        border-radius: 20px;
+                                    }
+                                    user-select: none;
                                 }
                             }
                         }
@@ -237,6 +401,38 @@ html{
                                 svg{
                                     font-size: 42px;
                                 }
+                                cursor: pointer;
+                            }
+                            &.is-gapless{
+                                position: relative;
+                                z-index:3;
+                                width: 10px;
+                                cursor: pointer;
+                                &:before, &:after{
+                                    content: '';
+                                    position: absolute;
+                                    background:transparent;
+                                    border: 2px solid transparent;
+                                    height:50px;
+                                    width:50px;
+                                    left:3px;
+                                    top:-1px;
+                                    border-radius: 50%;
+                                    opacity: 0.2;
+                                    transition:all 0.3s linear;
+                                    z-index:-1
+                                }
+                                &:before{
+                                    transform: scale(1.2);
+                                    animation:rotate-left 7s linear infinite;
+                                }
+                                &:after{
+                                    transform: scale(1.4);
+                                    animation:rotate 6s linear infinite;
+                                }
+                                &:hover{
+                                    transform: scale(1.1);
+                                }
                             }
                         }
                     }
@@ -266,6 +462,7 @@ html{
                     padding:6px 10px 0 10px;
                     img{
                         width: 100px;
+                        filter:invert(1);
                     }
                 }
                 svg{
@@ -273,15 +470,25 @@ html{
                 }
             }
         }
-        .sitePointer{
-            position: fixed;
-            height: 30px;
-            width: 30px;
-            background: rgba(0,0,225,0.8);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index:99999999999;
-	        mix-blend-mode: difference;
+        .extra-page{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height:100vh;
+            .site-info{
+                background: #eee;
+                a{
+                    &:hover{
+                        text-decoration: none!important;
+                    }
+                }
+            }
+            figure{
+                img{
+                    height: 90vh;
+                    width: auto;
+                }
+            }
         }
     }
 }
