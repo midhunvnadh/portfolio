@@ -20,7 +20,9 @@ class Footer extends React.Component {
                     <p>
                         <FontAwesomeIcon icon = {faCopyright}/> Free to use
                         <b> * </b> 
-                        <i>Source Releasing Soon</i>
+                        <a href = "https://github.com/midhunvnadh/portfolio/" target = "_blank" rel="noopener noreferrer" >
+                            Source
+                        </a>
                     </p>
                     <span className = "go-to-top" onClick = {() => {this.scrollTo(document.body, 0, 100)}}> <FontAwesomeIcon icon = {faArrowUp}/></span>
                 </div>

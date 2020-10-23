@@ -18,7 +18,7 @@ function Social(){
                 <div className = "column is-6 py-6 has-text-centered">
                     <div className="columns is-mobile">
                         <div className = "column is-gapless" data-platform = "youtube">
-                            <a href = "https://www.youtube.com/MidhunNadh" target = "_blank" rel="noopener noreferrer" >
+                            <a href = "https://www.youtube.com/MidhunVNadh" target = "_blank" rel="noopener noreferrer" >
                                 <Tada right duration = {1000}>
                                     <figure className= "icon ">
                                         <FontAwesomeIcon icon = {faYoutube}/>
