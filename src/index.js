@@ -2,9 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './styles/main.scss';
 import App from './App';
-import {ParallaxProvider} from "react-scroll-parallax"
+import * as serviceWorker from './serviceWorker';
 ReactDOM.render(
-    <ParallaxProvider>
-        <App />
-    </ParallaxProvider>, document.querySelector('body')
+        <App />, document.getElementById('root')
 );
+serviceWorker.register();

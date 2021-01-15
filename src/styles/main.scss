@@ -1,461 +1,437 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap');
-/* Defining Something Universal ;) */
-*{
-    font-family: 'Noto Sans JP', sans-serif;
-    transition: all 0.3s ease;
-}
+@import "bulma";
+@import "theme";
+@import "animations";
+
+
+$cards-breakpoint:980px;
+
 html{
-    overflow-x: hidden;
-    max-width: 100vw;
-}
-
-/* Website Themeing Control */
-$bg-wrap         : url(../img/wrap-bg.jpeg);
-$bg-wrap-lg      : url(../img/pexels-negative-space-34153.jpg);
-$Home-pic-height : 250px;
-$Home-pic-width  : 250px;
-$spc-btn-padding : 12px 16px;
-$spc-btn-color   : #eee;
-$rs-breakpoint   : 728px;
-
-/* Reduce code Redundancy*/
-
-@mixin defineScrollBar($color1, $color2, $color3){
-    &::-webkit-scrollbar {width: 5px;}
-    &::-webkit-scrollbar-track {background:$color1;
-                                border-radius: 5px;
-    }
-    &::-webkit-scrollbar-thumb {background: $color2;
-    }
-}
-@mixin displayflex {
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    flex-wrap: wrap;
-}
-@mixin bg-cover-full {
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-}
-@mixin text-outline {
-    $color:rgba(0,0,0,0.35);
-    text-shadow: 2px 0 0 $color,
-    -2px 0 0 $color,
-    0 2px 0 $color,
-    0 -2px 0 $color,
-    1px 1px 0$color,
-    -1px -1px 0 $color,
-    1px -1px 0 $color,
-    -1px 1px 0 $color;
-}
-@mixin hw-same($arg_hw){
-    width: $arg_hw;
-    height: $arg_hw;
-}
-@mixin ComponentPageTheming($color1, $color2, $color3, $color4){
-    background: $color1;
-    .header{
-        h1{
-            &.section-identity{
-                color:$color4;
-            }
-        }
-        p{
-            color:$color2;
-        }
-    }
-    a{
-        .close-section{
-            background: #dbe3e5;
-            color: $color1;
-        }
-    }
-}
-@mixin overlapDesign($color, $color1) {
-    position: relative;
-    &:before{
-        content:'';
-        @include hw-same(100px);
-        position: absolute;
-        border-radius: 50%;
-        background: $color;
-        top: -45px;
-        left:20%;
-    }
-    &:after{
-        content:'';
-        @include hw-same(100px);
-        position: absolute;
-        border-radius: 50%;
-        background: $color1;
-        top: -65px;
-        right:20%;
-    }
-}
-
-/*Styling Starts*/
-body{
-    margin:0;
-    @include defineScrollBar(#382933, #fff, #382933);
-        .social{
-            z-index: 2;
-            top:-17px;
-            .icon-grp{
-                .social-icon{
-                    img{
-                        @include hw-same(35px);
-                        margin: 10px;
+    scroll-behavior: smooth;
+    body{
+        overflow-x: hidden;
+        *{transition: all 0.3s linear;}
+        header{
+            min-height: 100px;
+            .site-settings{
+                -webkit-tap-highlight-color: transparent;
+                width: 70px;
+                height: 70px;
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+                position: fixed;
+                bottom: 40px;
+                left:20px;
+                z-index:300;
+                box-shadow: 0 0 16px 0px rgba(0,0,0,0.23);
+                .settings-icon{
+                    font-size: 35px;
+                }
+                .inside-settings{
+                    box-shadow: 0 0 23px -1px rgba(0,0,0,0.3);
+                    padding:10px;
+                    position: absolute;
+                    display: block;
+                    width: 300px;
+                    bottom:75px;
+                    left:-15px;
+                    border-radius: 10px;
+                    transform:rotateX(-90deg);
+                    transition: all 0.4s ease-in-out;
+                    transform-origin: bottom;
+                    overflow: hidden;
+                    form{
+                        flex-wrap: wrap;
+                        .column{
+                            justify-content: center;
+                            .control{
+                                .icon{
+                                    font-family: 'Roboto Mono', sans-serif;
+                                }
+                            }
+                        }
+                        .colorSchemes{
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            .c-scheme{
+                                span{
+                                    width: 30px;
+                                    height:30px;
+                                    margin: 5px;
+                                    border-radius: 10px;
+                                    display: inline-block;
+                                    border:1px solid rgba(0, 0, 0, 0.1);
+                                }
+                            }
+                            .icon-cs{
+                                font-size: 25px;
+                                margin-top: -3px;
+                                width:20px;
+                            }
+                        }
                     }
                 }
-                width: 300px;
-                @include displayflex();
-                background: #403a39;
-                border-radius: 10px;
-                position: absolute;
-                left: 10px;
-                bottom: -35px;
-                box-shadow: 10px 10px 19px -7px rgba(0,0,0,0.8);
-            }
-
-            @media screen and (max-width:$rs-breakpoint){
-                .icon-grp{
-                    left: 50%!important;
-                    margin-left: -150px;
+                &:hover{
+                    .inside-settings{
+                            transform:rotateX(0);
+                    }
                 }
             }
-            position: relative;
+            .css-terminal{
+                box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+                left: 50%;
+                border-radius: 10px;
+                overflow: hidden;
+                width: 100%;
+                .ui-actions{
+                    height: 30px;
+                    background: #fff;
+                    width: 100%;
+                    display: block;
+                    position: relative;
+                    .window-actions{
+                        position: absolute;
+                        height: 17px;
+                        width: 17px;
+                        left: 10px;
+                        top:5px;
+                        display: inline-block;
+                        background: #ff5c5c;
+                        border-radius: 50%;
+                        &:before, &:after{
+                            content: '';
+                            position: absolute;
+                            height: 17px;
+                            width: 17px;
+                            display: inline-block;
+                            border-radius: 50%;
+                        }
+                        &:after{
+                            left: 52px;
+                            background: #00ca56;
+                        }
+                        &:before{
+                            left: 27px;
+                            background: #ffbd4c;
+                        }
+                    }
+                }
+                .terminal{
+                    text-align: left;
+                    background: #000;
+                    height: 200px;
+                    padding: 3px;
+                    *{font-family: 'Roboto Mono';}
+                    .terminal-bash{
+                        .domain{
+                            color: yellow;
+                            font-weight: bolder;
+                        }
+                        .blue{
+                            color: blue;
+                            font-weight: bolder;
+                        }
+                    }
+                    color: #ffff;
+                    .blinkingCursor{
+                        animation:1s blink step-end infinite;
+                        font-weight: bolder;
+                    }
+                }
+            }
         }
         section{
-            /* Theming for Home */
-            &.home{
-                color:#fff;
-                $Width:100vw;
-                @include displayflex;
-                flex-direction: column;
-                background: $bg-wrap-lg;
-                @include bg-cover-full();
-                $Height:100vh;
-                height:120vh;
-                @media screen and (max-width:$rs-breakpoint){
-                    justify-content: space-evenly;
-                }
-                .center{
-                    @include displayflex;
-                    flex-direction: column;
+            min-height: 90px;
+            padding:100px 0;
+            .container{
+                .columns{
+                    justify-content: center;
                     flex-wrap: wrap;
-                    text-align: center;
-                    @media screen and (min-width:$rs-breakpoint){
-                        backdrop-filter: blur(1px) sepia(30%);
-                        box-shadow: 0 0 8px -2px rgba(0,0,0,0.3);
-                        border-radius:10px;
-                        padding:10px;
-                    }
-                    .port_pic_holder{
-                        $Height: $Home-pic-height;
-                        $Width: $Home-pic-width;
-                        max-height:$Height;
-                        max-width:$Width;
-                        min-height:$Height;
-                        min-width:$Width;
-                        overflow: hidden;
-                        @include displayflex;
-                        border-radius: 50%;
-                        &:hover{
-                            box-shadow:0 0 8px -2px #131a21;
-                        }
-                        img{
-                            height:$Height;
-                            width:$Width;
-                        }
-                    }
-                    .my_info{
-                        .my_name{
-                            @media screen and (min-width:$rs-breakpoint){
-                                font-size:30px;
-                            }
-                            font-size: 25px;
-                            h1{
-                                margin-block-start: 0.83em;
-                                margin-block-end: 0;
-                                @include text-outline();
-                            }
-                        }
-                        .my_info_desc{
-                            @media screen and (min-width:$rs-breakpoint){
-                                font-size:18px;
-                                padding: 0px 10px;
-                                @include text-outline();
-                            }
-                        }
-                    }
-                }
-            }
-            &.anim-section{
-                padding: 100px 0;
-                min-height:60vh;
-                @include displayflex();
-                align-items: stretch;
-                overflow: hidden;
-                @include ComponentPageTheming(#ecf4f3,#68b0ab, #006a71, #ff7e67);
-                &:nth-child(even){
-                    background: #e4e4e4;
-                }
-                .header{
-                    .container{
-                        top:10px;
-                        position: sticky;
-                        padding: 0 60px;
-                        margin-top: -15px;
-                        h1{
-                            &.section-identity{
-                                font-size:60px;
-                                margin-block-end: 0em;
-                            }
-                            margin-block-start: 0px;
-                        }
-                        p{
-                            margin-top: -1px;
-                            margin-left: 5px;
-                        }
-                        ul{
-                            list-style-type: none;
-                            margin-block-start: 10px;
-                            margin-block-end: 10px;
-                            padding-inline-start: 0;
+                    .column{
+                        .content{
                             li{
-                                margin-block-start: 10px;
-                                @include displayflex();
-                                justify-content: left;
-                                svg{
-                                    color: #68b0ab;
-                                    @include hw-same(20px);
-                                    padding: 5px;
-                                    border-radius: 50%;
+                                label{
+                                    margin-left: 10px;
+                                }
+                            }
+                        }
+                        .load-more-hold{
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            margin-block-start: 10px;
+                            .buttons{
+                                padding:8px;
+                                button{
+                                    label{
+                                        margin-right: 4px;
+                                    }
+                                }
+                            }
+                        }
+                        .container{
+                            ul{
+                                li{
+                                    display: flex;
+                                    align-items: center;
+                                    margin-block-end: 10px;
+                                    svg{
+                                        font-size: 23px;
+                                        width:22px;
+                                    }
+                                    label{
+                                        vertical-align: super;
+                                    }
+                                    overflow-wrap: anywhere;
+                                }
+                            }
+                        }
+                        .skills-pers{
+                            .skill-progress{
+                                margin-block-end: 15px;
+                                position: relative;
+                                progress{
+                                    height:2rem;
                                 }
                                 label{
-                                    margin-left: 8px;
-                                    color:#68b0ab;
-                                    font-size:14px;
-                                    a{
-                                        text-decoration: none;
-                                        color:#68b0ab;
-                                        &:hover{
-                                            text-decoration: underline;
-                                        }
+                                    overflow: hidden;
+                                    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+                                    left:0px;
+                                    bottom:0;
+                                    top:0px;
+                                    height: 2.3rem;
+                                    position: absolute;
+                                    border-radius: 5000px;
+                                    display: flex;
+                                    white-space: nowrap;
+                                    justify-content: center;
+                                    align-items: center;
+                                    transition: all 1s cubic-bezier(.87,.14,.47,.98);
+                                    width: 2.3rem;
+                                    svg{
+                                        font-size: 21px;
+                                        position: absolute;
+                                        transform:translateX(50%, -50%);
                                     }
-                                }
-                            }
-                        }
-                    }
-                    padding:0 10px;
-                    height: auto;
-                }
-                .section-side{
-                    width: 44%;
-                    padding:0 30px;
-                    color: #006a71;
-                    z-index:2
-                }
-                .svg-hold{
-                    position: absolute;
-                    z-index:1;
-                    bottom:-30px;
-                    right:10px;
-                    opacity:0.2;
-                }
-                position: relative;
-                a{
-                    text-decoration: none;
-                    .close-section{
-                        @include displayflex();
-                        @include hw-same(40px);
-                        position: fixed;
-                        top : 10px;
-                        left: 10px;
-                        font-size:30px;
-                        padding: 10px;
-                        border-radius: 50%;
-                        cursor:pointer;
-                    }
-                }
-                @media screen and (max-width:$rs-breakpoint){
-                    .header{
-                        .container{
-                            h1{
-                                &.section-identity{
-                                    font-size:55px;
-                                }
-                            }
-                            top:10px;
-                            position: unset;
-                            padding: 0 0;
-                            text-align: left;
-                        }
-                        width: 100%;
-                        padding:0 32px;
-                        height: unset;
-                    }
-                    .section-side{
-                        width: unset;
-                        padding:0 30px;
-                        color: #006a71;
-                    }
-                }
-            }
-            &.skills-page{
-                .section-side{
-                    text-align: center;
-                    .skills-pers{
-                        text-align: left;
-                        @include displayflex()
-                        .skill{
-                            flex: calc(50% - 50px);
-                            background: #c7a1a14f;
-                            margin: 10px;
-                            border-radius: 23px;
-                            padding: 12px;
-                            height: 30px;
-                            position: relative;
-                            overflow: hidden;
-                            box-shadow: 0 4px 8px 1px rgba(0,0,0,0.15);
-                            label{
-                                color: #ccc;
-                                z-index: 2;
-                                position: absolute;
-                                font-weight: bolder;
-                                font-family: 'Oswald', sans-serif;
-                            }
-                            .percent{
-                                position: absolute;
-                                top: 0;left: 0;bottom: 0;
-                                background: #ff7e67;
-                                z-index: 0;
-                            }
-                        }
-                        .fillPercent{
-                            .percent{
-                                animation:fadeInUp 1s linear;
-                                @keyframes fadeInUp{
-                                    from{
-                                        width: 0;
+                                    .hidden{
+                                        overflow: hidden;
                                         opacity: 0;
+                                        font-weight: 800;
+                                        position: relative;
                                     }
                                 }
-                            }
-                        }
-                    }
-                    @media screen and (max-width:$rs-breakpoint){
-                        .skills-pers{
-                            width: calc(100vw - 60px);
-                            .skill{
-                                flex: unset;width: 100%;
-                            }
-                        }
-                    }
-                    .load-more-hold{
-                        background: #e4e4e4;
-                        @media screen and (max-width:$rs-breakpoint){
-                            bottom: 0;
-                            position: sticky;
-                            z-index: 2;
-                        }
-                        .load-more{
-                            padding:14px 25px;
-                            margin: 25px;
-                            margin-bottom: none;
-                            background: none;
-                            color: #68b0ab;
-                            border-radius: 4px;
-                            font-family: 'Oswald', sans-serif;
-                            border: 1px solid #68b0ab;
-                            cursor: pointer;
-                            width: 200px;
-                            position: relative;
-
-                            .loader{
-                                @include hw-same(15px);
-                                border: 3px solid #ff7e67;
-                                border-left: 3px solid transparent;
-                                border-radius: 50%;
-                                display: inline-block;
-                                position: absolute;
-                                right: 25px;
-                                top: 14px;
-                                opacity: 0;
-                                animation: rotate 1s linear infinite;
-                                @keyframes rotate{
-                                    to{
-                                        transform: rotate(360deg);
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-                .svg-hold{
-                    img{
-                        @include hw-same(300px);
-                    }
-                    left:50px;
-                    top:50px;
-                    opacity: 0.3;
-                }
-                .header{
-                    z-index:2;
-                }
-            }
-            &.contact-page{
-                .section-side{
-                    .contact-form{
-                        @include displayflex();
-                        justify-content: stretch;
-                        .form-group{
-                            flex: 100%;
-                            margin:10px 0;
-                            input,textarea{
-                                background: none;
-                                padding: 8px 6px;
-                                border: 2px solid #68b0ab;
-                                color:#68b0ab;
-                                outline: none;
-                                border-radius: 10px;
-                                width: calc(100% - 18px);
-                                resize: none;
-                            }
-                            button{
-                                padding: 14px 16px;
-                                background: #ff7e67;
-                                border: none;
-                                color: #f4f4f4;
-                                cursor: pointer;
-                                border-radius: 10px;
-                            }
-                            label{
-                                position: absolute;
-                                bottom: 8px;
-                                left: 3px;
-                            }
-                            &.row{
-                                @include displayflex();
-                                justify-content: space-between;
-                                input{
-                                    &:first-child{
-                                        margin-bottom: 20px;
-                                    }
-                                }
-                            }
-                            @media screen and (min-width:$rs-breakpoint) {
-                                &.row{
-                                    input{
-                                        width: 241px;
-                                        margin-left: 0;margin-right: 0;
-                                        &:first-child{
-                                            margin-bottom: 0;
+                                &:hover{
+                                    label{
+                                        transition: all 0.2s cubic-bezier(.87,.14,.47,.98);
+                                        padding: 0 10px;
+                                        width: 50%;
+                                        svg{
+                                            display: none;
+                                        }
+                                        .hidden{
+                                            width: 100%;
+                                            margin:0 8px;
+                                            opacity: 1;
                                         }
                                     }
+                                }
+                            }
+                        }
+                        .cards{
+                            $breakPoint:$cards-breakpoint;
+                            $height:300px;
+                            .card-holder{
+                                -webkit-tap-highlight-color: transparent;
+                                margin-block-end: 10px;
+                                .card{
+                                    .card-content{
+                                        .media-content{
+                                            overflow-x: inherit;
+                                        }
+                                    }
+                                }
+                            }
+                            position: relative;
+                            height: $height;
+                            @media screen and (max-width:$breakPoint){
+                                height:$height+160;
+                                transform: translateX(20px);
+                            }
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;                
+                            .card-holder{
+                                outline: none;
+                                border: none;
+                                box-shadow: none;
+                                *{
+                                    user-select: none;
+                                }
+                                position: absolute;
+                                $card-width:230px;
+                                width: $card-width+5px;
+                                height:$height;
+                                cursor: pointer;
+                                right:30%;
+                                @media screen and (max-width:$breakPoint){
+                                    width:auto;
+                                    height:auto;
+                                    right:0;
+                                    left:0;
+                                }
+                                .card{
+                                    width:$card-width;
+                                    height: 329px;
+                                    border-radius: 7px;
+                                    @media screen and (max-width:$breakPoint){
+                                        width:auto;
+                                        height:auto;
+                                        animation-delay: none!important;
+                                    }
+                                    &:hover{
+                                        transform:translateY(-45px);
+                                        @media screen and (max-width:$breakPoint){
+                                            transform: unset;
+                                        }
+                                    }
+                                }
+                                @for $i from 1 through 3{
+                                    &:nth-child(#{$i}){
+                                        $transX : $i * 25px;
+                                        z-index: $i*2;
+                                        top:-75px;
+                                        transform:translateX($transX) translateY(25px*$i);
+                                        @media screen and (max-width:$breakPoint){
+                                            transform:translateY(55px*$i) translateX(-10px*$i) scale(0.9);
+                                            top:0;
+                                        }
+                                    }
+                                }
+                                @media screen and (max-width:$breakPoint){
+                                    &:nth-child(3):focus .card{
+                                        animation:none!important;
+                                        transform: scale(1.2);
+                                    }
+                                    &:nth-child(3):not(:focus) .card{
+                                        animation:none!important;
+                                        transform: scale(1.1);
+                                    }
+                                }
+                                &:focus{
+                                    z-index:2;
+                                    .card{
+                                        transform:translateX(-300px);
+                                        @media screen and (max-width:$breakPoint){
+                                            transform:scale(1.1);
+                                            z-index:500;
+                                            animation: pickCard 1s linear!important;
+                                        }
+                                    }
+                                    @media screen and (max-width:$breakPoint){
+                                        z-index:520;
+                                    }
+                                }
+                                @media screen and (max-width:$breakPoint){
+                                    &:not(:focus){
+                                        z-index:1;
+                                        .card{
+                                            transform:translateX(-300px);
+                                            transform:scale(1.1);
+                                            z-index:500;
+                                            animation: putCardBack 1s linear!important;
+                                        }
+                                        z-index:500;
+                                    }
+                                }
+                            }
+                        }
+                        .cards{
+                            div{
+                                &.subtitle{
+                                    &.th-core{
+                                        @media screen and (max-width:$cards-breakpoint){
+                                            display: none;
+                                        }
+                                        width: 300px;
+                                        transform: rotateZ(-90deg) translateY(-220px) translateX(0px);
+                                        text-align: center;
+                                        font-size: 35px;
+                                        font-weight: bolder;
+                                        opacity: 0.3!important;
+                                        border-radius: 20px;
+                                    }
+                                    user-select: none;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            &:nth-child(odd){
+                .container{
+                    .columns{
+                        .column{
+                            .container{
+                                ul{
+                                    li{
+                                        label{
+                                            a{
+                                                &:hover{
+                                                    text-decoration: underline;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .social-info{
+            .columns{
+               .column{
+                    .columns{
+                        .column{
+                            figure{
+                                svg{
+                                    font-size: 42px;
+                                }
+                                cursor: pointer;
+                            }
+                            &.is-gapless{
+                                position: relative;
+                                z-index:3;
+                                width: 10px;
+                                cursor: pointer;
+                                &:before, &:after{
+                                    content: '';
+                                    position: absolute;
+                                    background:transparent;
+                                    border: 2px solid transparent;
+                                    height:50px;
+                                    width:50px;
+                                    left:3px;
+                                    top:-1px;
+                                    border-radius: 50%;
+                                    opacity: 0.2;
+                                    transition:all 0.3s linear;
+                                    z-index:-1
+                                }
+                                &:before{
+                                    transform: scale(1.2);
+                                    animation:rotate-left 7s linear infinite;
+                                }
+                                &:after{
+                                    transform: scale(1.4);
+                                    animation:rotate 6s linear infinite;
+                                }
+                                &:hover{
+                                    transform: scale(1.1);
                                 }
                             }
                         }
@@ -464,22 +440,55 @@ body{
             }
         }
         footer{
-            background: #382933;
-            padding: 30px;
-            @include displayflex();
-            .main-footer{
-                display: block;
-            }
-            .sub-footer{
-                color: #cedebd;
-                letter-spacing: 1px;
-                *{
-                    color: #cedebd;
+            position: relative;
+            .content{
+                .go-to-top{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 50px;height: 50px;
+                    position: absolute;
+                    top: -25px;
+                    right: 25px;
+                    cursor: pointer;
                 }
-                b{
-                    position: relative;
-                    top: 5px;
+            }
+            .power-by{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                figure{
+                    display: inline-block;
+                    padding:6px 10px 0 10px;
+                    img{
+                        width: 100px;
+                        filter:invert(1);
+                    }
+                }
+                svg{
+                    font-size: 28px;
                 }
             }
         }
+        .extra-page{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height:100vh;
+            .site-info{
+                background: #eee;
+                a{
+                    &:hover{
+                        text-decoration: none!important;
+                    }
+                }
+            }
+            figure{
+                img{
+                    height: 90vh;
+                    width: auto;
+                }
+            }
+        }
+    }
 }

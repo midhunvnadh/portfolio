@@ -1,0 +1,89 @@
+section{
+    &.admin-section{
+        min-height: 100vh!important;
+        .message-modal{
+            .modal-card{
+                .modal-card-body{
+                    .group{
+                        margin-block-end: 10px;
+                        .start{
+                            font-weight: bolder;
+                        }
+                        &.break{
+                            .end{
+                                display: block;
+                                margin-block-start: 10px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .table{
+            th, td{
+                vertical-align: middle;
+            }
+        }
+        .site-theme-card{
+            .tabs{
+                li{
+                    .content{
+                        display: none;
+                    }
+                    a{
+                        &:hover{
+                            text-decoration: none!important;
+                        }
+                    }
+                    &.is-active{
+                        a{
+                            *{color: #ffffff!important;}
+                            &:hover *{
+                                text-decoration: none!important;
+                                color: #fff!important;
+                            }
+                        }
+                        .content{
+                            display: block;
+                        }
+                    }
+                }
+            }
+            .container{
+                .availableColorSchemes{
+                    text-align: center;
+                    height: 100%;
+                    position: relative;
+                    .c-scheme{
+                        display: flex;
+                        justify-content: center;
+                        span{
+                            height: 30px;
+                            width: 30px;
+                            border-radius: 10px;
+                            border: 1px solid rgba(0,0,0,0.1);
+                            display: inline-block;
+                            margin: 5px;
+                        }
+                    }
+                }
+            }
+        }
+        .nav-holder{
+            margin-left: 0;
+            width: 100%;
+            .is-parent{
+                width:100%;
+                .tile{
+                    width: 100%;
+                    .container{
+                        width: 100%;
+                        .site-info{
+                            margin-inline-start: 10px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

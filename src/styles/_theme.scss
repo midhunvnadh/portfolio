@@ -1,0 +1,306 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Roboto+Slab&display=swap');
+    html{
+        &::-webkit-scrollbar-track{
+            background-color: var(--quaternary-color);
+        }
+        &::-webkit-scrollbar{
+            background-color: var(--quaternary-color);
+            width:8px
+        }
+        &::-webkit-scrollbar-thumb
+        {
+            border-radius: 5px;
+            background-color: var(--secondary-color);	
+            background-image: -webkit-linear-gradient(45deg,var(--teritiary-color) 25%,transparent 25%,transparent 50%,rgba(255, 255, 255, .2) 50%,rgba(255, 255, 255, .2) 75%,transparent 75%,transparent)
+        }
+    }
+    body{
+        #root{
+            ::selection{
+                background-color:var(--quaternary-color);
+                color: var(--primary-color);
+            }
+            header{
+                &.section{
+                background-color: var(--primary-color);
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 100 60'%3E%3Cg %3E%3Crect fill='%23cc81b9' width='11' height='11'/%3E%3Crect fill='%23cf82b8' x='10' width='11' height='11'/%3E%3Crect fill='%23d283b6' y='10' width='11' height='11'/%3E%3Crect fill='%23d584b5' x='20' width='11' height='11'/%3E%3Crect fill='%23d885b3' x='10' y='10' width='11' height='11'/%3E%3Crect fill='%23db86b2' y='20' width='11' height='11'/%3E%3Crect fill='%23dd87b1' x='30' width='11' height='11'/%3E%3Crect fill='%23e088af' x='20' y='10' width='11' height='11'/%3E%3Crect fill='%23e289ae' x='10' y='20' width='11' height='11'/%3E%3Crect fill='%23e48aac' y='30' width='11' height='11'/%3E%3Crect fill='%23e78cab' x='40' width='11' height='11'/%3E%3Crect fill='%23e98daa' x='30' y='10' width='11' height='11'/%3E%3Crect fill='%23ea8fa8' x='20' y='20' width='11' height='11'/%3E%3Crect fill='%23ec90a7' x='10' y='30' width='11' height='11'/%3E%3Crect fill='%23ee92a6' y='40' width='11' height='11'/%3E%3Crect fill='%23ef93a5' x='50' width='11' height='11'/%3E%3Crect fill='%23f195a3' x='40' y='10' width='11' height='11'/%3E%3Crect fill='%23f297a2' x='30' y='20' width='11' height='11'/%3E%3Crect fill='%23f398a1' x='20' y='30' width='11' height='11'/%3E%3Crect fill='%23f49aa0' x='10' y='40' width='11' height='11'/%3E%3Crect fill='%23f59c9f' y='50' width='11' height='11'/%3E%3Crect fill='%23f69e9e' x='60' width='11' height='11'/%3E%3Crect fill='%23f7a09d' x='50' y='10' width='11' height='11'/%3E%3Crect fill='%23f8a29d' x='40' y='20' width='11' height='11'/%3E%3Crect fill='%23f9a49c' x='30' y='30' width='11' height='11'/%3E%3Crect fill='%23f9a69b' x='20' y='40' width='11' height='11'/%3E%3Crect fill='%23faa89b' x='10' y='50' width='11' height='11'/%3E%3Crect fill='%23faaa9a' x='70' width='11' height='11'/%3E%3Crect fill='%23fbac9a' x='60' y='10' width='11' height='11'/%3E%3Crect fill='%23fbae9a' x='50' y='20' width='11' height='11'/%3E%3Crect fill='%23fbb099' x='40' y='30' width='11' height='11'/%3E%3Crect fill='%23fbb299' x='30' y='40' width='11' height='11'/%3E%3Crect fill='%23fbb499' x='20' y='50' width='11' height='11'/%3E%3Crect fill='%23fbb799' x='80' width='11' height='11'/%3E%3Crect fill='%23fbb999' x='70' y='10' width='11' height='11'/%3E%3Crect fill='%23fbbb99' x='60' y='20' width='11' height='11'/%3E%3Crect fill='%23fbbd9a' x='50' y='30' width='11' height='11'/%3E%3Crect fill='%23fbbf9a' x='40' y='40' width='11' height='11'/%3E%3Crect fill='%23fac29b' x='30' y='50' width='11' height='11'/%3E%3Crect fill='%23fac49b' x='90' width='11' height='11'/%3E%3Crect fill='%23fac69c' x='80' y='10' width='11' height='11'/%3E%3Crect fill='%23f9c89d' x='70' y='20' width='11' height='11'/%3E%3Crect fill='%23f9ca9e' x='60' y='30' width='11' height='11'/%3E%3Crect fill='%23f8cc9f' x='50' y='40' width='11' height='11'/%3E%3Crect fill='%23f8cfa0' x='40' y='50' width='11' height='11'/%3E%3Crect fill='%23f7d1a1' x='90' y='10' width='11' height='11'/%3E%3Crect fill='%23f7d3a2' x='80' y='20' width='11' height='11'/%3E%3Crect fill='%23f6d5a4' x='70' y='30' width='11' height='11'/%3E%3Crect fill='%23f5d7a5' x='60' y='40' width='11' height='11'/%3E%3Crect fill='%23f5d9a7' x='50' y='50' width='11' height='11'/%3E%3Crect fill='%23f4dca8' x='90' y='20' width='11' height='11'/%3E%3Crect fill='%23f3deaa' x='80' y='30' width='11' height='11'/%3E%3Crect fill='%23f3e0ac' x='70' y='40' width='11' height='11'/%3E%3Crect fill='%23f2e2ae' x='60' y='50' width='11' height='11'/%3E%3Crect fill='%23f1e4b0' x='90' y='30' width='11' height='11'/%3E%3Crect fill='%23f1e6b2' x='80' y='40' width='11' height='11'/%3E%3Crect fill='%23f0e8b4' x='70' y='50' width='11' height='11'/%3E%3Crect fill='%23efeab6' x='90' y='40' width='11' height='11'/%3E%3Crect fill='%23efecb9' x='80' y='50' width='11' height='11'/%3E%3Crect fill='%23EEB' x='90' y='50' width='11' height='11'/%3E%3C/g%3E%3C/svg%3E");
+                background-size: cover;
+                .container{
+                        .level-left{
+                            background:var(--quinary-color);
+                            .hero{
+                                .hero-body{
+                                    .container{
+                                        .title{
+                                            color:var(--primary-color);
+                                            font-family: 'Roboto Mono', sans-serif;
+                                            letter-spacing: 2px;
+                                        }
+                                        .subtitle, *{
+                                            color:var(--teritiary-color);
+                                            font-family: 'Roboto Mono', sans-serif;
+                                            letter-spacing: 1px;
+                                        }
+                                        .subtitle{
+                                            font-weight: 800;
+                                        }
+                                        .title, .subtitle{
+                                            text-shadow: 0 13.36px 8.896px rgba(0,0,0,0.22);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        .columns{
+                            .other-links{
+                                ul{
+                                    li{
+                                        color:var(--secondary-color);
+                                        font-family: 'Roboto Slab';
+                                        font-weight: bolder;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .site-settings{
+                        background-color: var(--secondary-color);
+                        .settings-icon{
+                            color: var(--quaternary-color);
+                        }
+                        .inside-settings{
+                            background: var(--quaternary-color);
+                        }
+                    }
+                }
+            }
+            section{
+                background: var(--quinary-color);
+                .container{
+                    .columns{
+                        .column{
+                            .container{
+                                ul{
+                                    li{
+                                        font-weight: 600;
+                                        label,svg, a{color: var(--primary-color);}
+                                    }
+                                }
+                                .title{
+                                    font-family: 'Roboto Mono', sans-serif;
+                                    color:var(--primary-color);
+                                }
+                                .subtitle{
+                                    margin-inline-start: 1px;
+                                    color: var(--teritiary-color);
+                                    font-weight: 600;
+                                }
+                                form{
+                                    label{
+                                        color: var(--secondary-color);
+                                    }
+                                    input, textarea{
+                                        border:2px solid var(--teritiary-color);
+                                        background:var(--quinary-color);
+                                        &::placeholder, &::-webkit-input-placeholder, &:-moz-placeholder, &::-moz-placeholder{
+                                            color:var(--secondary-color);
+                                        }
+                                    }
+                                    .control{
+                                        button{
+                                            &.button{
+                                                background:var(--secondary-color);
+                                                color:var(--quinary-color)!important;
+                                                &.is-light{
+                                                    background: unset;
+                                                    color:var(--secondary-color)!important;
+                                                }
+                                            }
+                                        }
+                                        .icon{
+                                            &.is-small{
+                                                &.is-left{
+                                                    color: var(--teritiary-color);
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            &.content{
+                                p{
+                                    letter-spacing: 1px;
+                                    color:var(--secondary-color);
+                                    strong{
+                                        color:var(--secondary-color)
+                                    }
+                                }
+                            }
+                            .cards{
+                                div{
+                                    &.subtitle{
+                                        color: var(--quaternary-color);
+                                        border:5px dotted var(--quaternary-color);
+                                        padding:65px 30px;
+                                    }
+                                }
+                                .card-holder{
+                                    .card{
+                                        box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+                                        background-color:var(--quinary-color);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            section.hero.skills-page, & > section.hero.special-page{
+                background-color: var(--secondary-color);
+                .container{
+                    .columns{
+                        .column{
+                            .container{
+                                ul{
+                                    li{
+                                        label,svg{
+                                            color: var(--quaternary-color);
+                                        }
+                                    }
+                                }
+                                .title{
+                                    font-family: 'Roboto Mono', sans-serif;
+                                    color:var(--quaternary-color);
+                                }
+                                .subtitle{
+                                    color: var(--teritiary-color);
+                                }
+                            }
+                            .skills-pers{
+                                .skill-progress{
+                                    label{
+                                        background-color: var(--teritiary-color);
+                                        color: var(--primary-color);
+                                        svg{
+                                            color:var(--primary-color)
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .social-info{
+                background-color: var(--quaternary-color);
+                .columns{
+                   .column{
+                        .hero-body{
+                            .container{
+                               h1{
+                                   color: var(--primary-color);
+                                    font-family: 'Roboto Mono', sans-serif;
+                                }
+                               h2{
+                                   color: var(--secondary-color);
+                                    font-family: 'Roboto Mono', sans-serif;
+                                }
+                            }
+                        }
+                        svg{
+                            color:var(--primary-color);
+                        }
+                        .columns{
+                            .column{
+                                &.is-gapless{
+                                    &:after{
+                                        border-top:2px solid var(--teritiary-color);
+                                        border-bottom: 2px solid var(--teritiary-color);
+                                    }
+                                    &:before{
+                                        border-left:2px solid var(--teritiary-color);
+                                        border-right: 2px solid var(--teritiary-color);
+                                    }
+                                    &[data-platform="youtube"]{
+                                        &:hover{
+                                            svg{
+                                                color: #FF0000;
+                                            }
+                                        }
+                                    }
+
+                                    &[data-platform="telegram"]{
+                                        &:hover{
+                                            svg{
+                                                color: #0088cc;
+                                            }
+                                        }
+                                    }
+
+                                    &[data-platform="twitter"]{
+                                        &:hover{
+                                            svg{
+                                                color: #00acee;
+                                            }
+                                        }
+                                    }
+
+                                    &[data-platform="github"]{
+                                        &:hover{
+                                            svg{
+                                                color: #211F1F;
+                                            }
+                                        }
+                                    }
+
+                                    &[data-platform="wordpress"]{
+                                        &:hover{
+                                            svg{
+                                                color: #21759b;
+                                            }
+                                        }
+                                    }
+
+                                    &[data-platform="skype"]{
+                                        &:hover{
+                                            svg{
+                                                color: #00aff0;
+                                            }
+                                        }
+                                    }
+
+                                    &[data-platform="gitlab"]{
+                                        &:hover{
+                                            svg{
+                                                color: #e24329;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            footer{
+                &.footer{
+                    font-family: 'Roboto Mono', sans-serif;
+                    background: var(--primary-color);
+                    color: var(--quaternary-color);
+                }
+                .content{
+                    .go-to-top{
+                        background: var(--secondary-color);
+                    }
+                }
+            }
+            footer a{
+                color:unset;
+                text-decoration: none;
+                &:hover{
+                    text-decoration: underline;
+                    color: unset!important;
+                }
+            }
+        }
+    }
